@@ -1,0 +1,206 @@
+<style>
+    .pagination .page-link {
+        background-color: #111 !important;
+        border: none;
+        color: #ccc;
+    }
+    .pagination .page-link:hover {
+        background-color: #222 !important;
+        color: #fff;
+    }
+    .pagination .active .page-link {
+        background-color: #3b82f6 !important;  /* Tailwind blue-500 style */
+        color: white !important;
+        border: none;
+    }
+    .pagination .disabled .page-link {
+        color: #666 !important;
+        background-color: #111 !important;
+    }
+</style>
+
+{% extends 'layouts/main-layout.html' %}
+{% block content %}
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Vendor Details</h3>
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                        <li class="breadcrumb-item" aria-current="page">Vendors</li>
+                        <li class="breadcrumb-item active" aria-current="page">Vendor Details</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <section class="section">
+        <div>
+            <a href="{% url 'vendors:list' %}" class="btn btn-sm btn-outline-info my-3">Back to Vendor List</a>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h6 class="my-3">
+                    <i class="bi bi-person-badge"></i>
+                    <span>Vendor Information</span>                       
+                </h6>
+                <div class="table-responsive">
+                    <table class="table table-borderless">
+                        <tbody>
+                        <tr>
+                            <th scope="row">Vendor Name</th>
+                            <td> {{vendor.name}} </td>
+                            <th scope="row">Email</th>
+                            <td> {{vendor.email}} </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Phone</th>
+                            <td> {{vendor.phone}} </td>
+                            <th scope="row">Contact Person</th>
+                            <td> {{vendor.contact_person}} </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Designation</th>
+                            <td>{{vendor.designation}}</td>
+                            <th scope="row">GSTIN Number</th>
+                            <td>{{vendor.gstin_number}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Address</th>
+                            <td colspan="3">{{vendor.address.address_line_one}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Description</th>
+                            <td colspan="3">{{vendor.description|urlize}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% if custom_fields %}
+        <div class="card mt-3">
+            <div class="card-header">
+                <h6>Custom Fields</h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {% for cf in custom_fields %}
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <th >{{cf.field_name}}</th>
+                                    <td>{{cf.field_value}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <table class="table table-borderless">
+            <tbody>
+                <tr>
+                    <th>{{ cf.field_name }}</th>
+                    <td>{{ cf.field_value }}</td>
+                </tr>
+            </tbody>
+        </table> 
+        {% endif %}
+        <div class="card">
+            <div class="card-header">
+                <h4>Asset List</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-lg table-borderless">
+                        <thead>
+                            <tr>
+                                <th>Sl No.</th>
+                                <th>Asset Serial Number</th>
+                                <th>Asset Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for asset in assets_page_object %}
+                            <tr>
+                                <td class="col-3">
+                                    <div class="d-flex align-items-center">
+                                        <p class="font-bold ms-3 mb-0">
+                                            {{ assets_page_object.start_index|add:forloop.counter0 }}
+                                        </p>
+                                    </div>
+                                </td>
+                                <td class="col-auto">
+                                    {{ asset.serial_no|default:"######" }}
+                                </td>
+
+                                <td class="col-auto">
+                                    {{ asset.name|default:"Unnamed Asset" }}
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="2">No assets assigned to this vendor.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <!-- Explicit Pagination for assets_page_object -->
+                    {% if assets_page_object.has_other_pages %}
+                        <nav aria-label="Asset pagination">
+                            <ul class="pagination justify-content-end">
+
+                                <!-- Previous -->
+                                {% if assets_page_object.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link bg-dark text-white" href="?asset_page={{ assets_page_object.previous_page_number }}">
+                                        &laquo; Previous
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disabled">
+                                    <span class="page-link bg-dark text-muted">
+                                        &laquo; Previous
+                                    </span>
+                                </li>
+                                {% endif %}
+
+                                <!-- Current Page -->
+                                <li class="page-item active">
+                                    <span class="page-link bg-primary text-white border-0">
+                                        {{ assets_page_object.number }}
+                                    </span>
+                                </li>
+
+                                <!-- Next -->
+                                {% if assets_page_object.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link bg-dark text-white" href="?asset_page={{ assets_page_object.next_page_number }}">
+                                        Next &raquo;
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disabled">
+                                    <span class="page-link bg-dark text-muted">
+                                        Next &raquo;
+                                    </span>
+                                </li>
+                                {% endif %}
+
+                            </ul>
+                        </nav>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        {% include 'commons/history.html' %}
+    </section>
+</div>
+{% endblock content%}

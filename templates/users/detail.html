@@ -1,0 +1,282 @@
+{% extends 'layouts/main-layout.html' %}
+{% load static %}
+{% block content %}
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>User Details</h3>
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                        <li class="breadcrumb-item" aria-current="page">Users</li>
+                        <li class="breadcrumb-item active" aria-current="page">User Details</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+<div>
+    <a href="{% url 'users:list' %}" class="btn btn-sm btn-outline-info my-3">Back to User List</a>
+</div>
+<div class="page-content">
+    <section class="row">
+        <div class="col-12 col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row gallery">
+                        <div class="col-12 mb-2 py-2 px-2 border">
+                        {% if user.profile_pic %}
+                            <img class="w-100 active" src="{{user.profile_pic.url}}">               
+                        {% else %}
+                            <img class="w-100 active" src="{% static 'assets/images/faces/1.jpg' %}">
+                        {% endif %}
+                        </div>
+                        <h6 class="my-3">
+                            <i class="bi bi-person-badge"></i>
+                            <span>Contact Information</span>
+                        </h6>
+                        <p><i class="bi bi-telephone-fill"></i>&nbsp; <a href="tel:{{user.phone}}">{{user.phone}}</a> </p>
+                        <p><i class="bi bi-envelope-fill"></i>&nbsp; <a href="mailto:{{user.email}}">{{user.email}}</a> </p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-8">
+
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="my-3">
+                        <i class="bi bi-person-fill"></i>
+                        <span>Basic Information</span>                       
+                    </h6>
+                    <table class="table table-borderless">
+
+                        <tr>
+                            <td><b>Full Name</b></td>
+                            <td>{{user.full_name}}</td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Designation</b></td>
+                            <td>{{user.role}}</td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Department</b></td>
+                            <td>{{user.department}}</td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Status</b></td>
+                            <td>
+                                {% if user.is_active %}
+                                    Active
+                                {% else %}
+                                    Inactive
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Address</b></td>
+                            <td>{{user.address.address_line_one}}</td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="my-3">
+                        <i class="bi bi-building"></i>
+                        <span>Company Information</span>
+                    </h6>
+                    <table class="table table-borderless">
+                        <tr>
+                            <td><b>Company Name</b></td>
+                            <td>{{user.location.office_name}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Company Address</b></td>
+                            <td>{{user.location.address.address_line_one}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Contact Person Name</b></td>
+                            <td>{{user.location.contact_person_name}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Contact Person Number</b></td>
+                            <td>{{user.location.contact_person_phone}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Contact Person Email</b></td>
+                            <td>{{user.location.contact_person_email}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div>   
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="my-3">
+                        <i class="bi bi-people-fill"></i>
+                        <span>Assigned Assets</span>                       
+                    </h6>
+                    {% if assigned_assets %}
+                        <div class="table-responsive">
+                            <table class="table table-borderless">
+                                <tr>
+                                    <td><b>Sl No.</b></td>
+                                    <td>Asset Images</td>
+                                    <td><b>Asset Number</b></td>
+                                    <td><b>Asset Name</b></td>
+                                    <td>Type</td>
+                                    <td>Vendor Name</td>
+                                    <td><b>Assigned Date</b></td>
+                                </tr>
+                                {% for assigned_asset in assigned_assets %}
+                                    <tr>
+                                        <td>{{assigned_assets.start_index|add:forloop.counter0}}</td>
+                                    
+                                        <td>
+                                            {% with assigned_asset.asset.images.all as images %}
+                                                <div class="asset-thumbnail">
+                                                    {% if images %}
+                                                        <img src="{{ images.0.image.url }}"
+                                                            class="img-fluid"
+                                                            style="width: 150px; height: 150px; object-fit: cover; border: none; cursor: pointer;"
+                                                            onclick="openAssetModal('carouselModal{{ assigned_asset.asset.id }}')"
+                                                            >
+                                                    {% else %}
+                                                        <img src="{% static 'assets/images/No_Image.jpg' %}"
+                                                            style="width: 150px; height: 150px; object-fit: cover; border: none;">
+                                                    {% endif %}
+                                                </div>
+                                            {% endwith %}
+                                        </td>
+                                        <td>{{assigned_asset.asset.serial_no}}</td>
+                                        <td>{{assigned_asset.asset.name}}</td>
+                                        <td>{{assigned_asset.asset.product.name}}</td>
+                                        <td>{{assigned_asset.asset.vendor}}</td>
+                                        <td>{{assigned_asset.assigned_date|date:"D, M d, Y"}}</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                            <div class='dataTable-bottom'>
+                                Showing {{ assigned_assets.start_index }} to {{ assigned_assets.end_index }} of {{ assigned_assets.paginator.count }} entries
+                            </div>
+
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination pagination-primary justify-content-end">
+
+                                    <li class="page-item {% if not assigned_assets.has_previous %} disabled {% endif %}">
+                                    <a class="page-link" 
+                                        {% if assigned_assets.has_previous %}
+                                        href="?assets_page={{ assigned_assets.previous_page_number }}&page={{ page_object.number }}"
+                                        {% endif %}
+                                        tabindex="-1" aria-disabled="true">« Previous</a>
+                                    </li>
+
+                                    {% for i in assigned_assets.paginator.page_range %}
+                                    <li class="page-item {% if assigned_assets.number == i %} active {% endif %}">
+                                        <a class="page-link" href="?assets_page={{ i }}&page={{ page_object.number }}">{{ i }}</a>
+                                    </li>
+                                    {% endfor %}
+
+                                    <li class="page-item {% if not assigned_assets.has_next %} disabled {% endif %}">
+                                    <a class="page-link" 
+                                        {% if assigned_assets.has_next %}
+                                        href="?assets_page={{ assigned_assets.next_page_number }}&page={{ page_object.number }}"
+                                        {% endif %}
+                                    >Next »</a>
+                                    </li>
+
+                                </ul>
+                            </nav>
+                        </div>
+                    {% else %}
+                        <p>No assets assigned to this user.</p>
+                    {% endif %}
+                    {% for assigned_asset in assigned_assets %}
+                        {% with assigned_asset.asset.images.all as images %}
+                            {% if images %}
+                                <div class="modal fade" id="carouselModal{{ assigned_asset.asset.id }}" tabindex="-1" aria-labelledby="carouselModalLabel{{ assigned_asset.asset.id }}" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                                        <div class="modal-content">
+
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="carouselModalLabel{{ assigned_asset.asset.id }}">Asset Images</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+
+                                            <div class="modal-body p-0">
+                                                <div id="carousel{{ assigned_asset.asset.id }}" class="carousel slide" data-bs-ride="carousel">
+                                                    <div class="carousel-inner">
+                                                        {% for image in images %}
+                                                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                                                <img class="d-block w-100"
+                                                                    src="{{ image.image.url }}"
+                                                                    alt="Asset Image"
+                                                                    style="object-fit: contain; max-height: 600px;">
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+
+                                                    {% if images|length > 1 %}
+                                                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel{{ assigned_asset.asset.id }}" data-bs-slide="prev">
+                                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                        </button>
+                                                        <button class="carousel-control-next" type="button" data-bs-target="#carousel{{ assigned_asset.asset.id }}" data-bs-slide="next">
+                                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                        </button>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            {% endif %}
+                        {% endwith %}
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+        {% include 'commons/history.html'  %}
+    </section>
+</div>
+<script>
+    function openAssetModal(modalId) {
+        const modalEl = document.getElementById(modalId);
+        const modal = new bootstrap.Modal(modalEl);
+        modal.show();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Fix: When multiple modals are in DOM, make sure `modal-open` class remains
+        $(document).on('hidden.bs.modal', '.modal', function () {
+            if ($('.modal.show').length > 0) {
+                $('body').addClass('modal-open');
+            }
+        });
+
+        // Optional: z-index stacking fix for multiple modals
+        $(document).on('show.bs.modal', '.modal', function () {
+            let zIndex = 1050 + (10 * $('.modal:visible').length);
+            $(this).css('z-index', zIndex);
+            setTimeout(function () {
+                $('.modal-backdrop:not(.modal-stack)').first().css('z-index', zIndex - 1).addClass('modal-stack');
+            }, 0);
+        });
+    });
+</script>
+{% endblock content %}
