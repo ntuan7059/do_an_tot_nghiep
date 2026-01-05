@@ -1,0 +1,111 @@
+<mxGraphModel dx="1965" dy="1148" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="1D2Ij9n088tiYJLlI3Qc-25" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="" vertex="1">
+      <mxGeometry height="1200" width="1780" x="590" y="650" as="geometry" />
+    </mxCell>
+    <mxCell id="admin" parent="1" style="shape=umlActor;" value="Admin" vertex="1">
+      <mxGeometry height="120" width="60" x="410" y="1180" as="geometry" />
+    </mxCell>
+    <mxCell id="system" parent="1" style="rounded=1;strokeWidth=0;imageHeight=24;imageWidth=24;arcSize=12;miterlimit=4;resizable=1;resizeWidth=1;resizeHeight=1;strokeColor=#FFFFFF;" value="Quản lý người dùng" vertex="1">
+      <mxGeometry height="650" width="1140" x="810" y="910" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_login" parent="system" style="ellipse;" value="Đăng nhập" vertex="1">
+      <mxGeometry height="60" width="278.66666666666663" x="-85.49366666666673" y="110" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_search" parent="system" style="ellipse;" value="Tìm kiếm người dùng" vertex="1">
+      <mxGeometry height="60" width="304" x="275.49683333333326" y="140" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_update" parent="system" style="ellipse;" value="Cập nhật người dùng" vertex="1">
+      <mxGeometry height="60" width="329.33333333333326" x="379.99683333333326" y="285" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_sort" parent="system" style="ellipse;" value="Sắp xếp người dùng" vertex="1">
+      <mxGeometry height="60" width="329.33333333333326" x="379.99683333333326" y="370" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_status" parent="system" style="ellipse;" value="Quản lý trạng thái người dùng" vertex="1">
+      <mxGeometry height="60" width="380" x="313.4968333333333" y="480" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_list" parent="system" style="ellipse;" value="Xem danh sách người dùng" vertex="1">
+      <mxGeometry height="60" width="380" x="698.2468333333333" y="80" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_detail" parent="system" style="ellipse;" value="Xem thông tin chi tiết" vertex="1">
+      <mxGeometry height="60" width="380" x="698.2468333333333" y="170" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_edit" parent="system" style="ellipse;" value="Sửa người dùng" vertex="1">
+      <mxGeometry height="60" width="329.33333333333326" x="769.4968333333333" y="260" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_delete" parent="system" style="ellipse;" value="Xóa người dùng" vertex="1">
+      <mxGeometry height="60" width="329.33333333333326" x="769.4968333333333" y="345" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_inactive" parent="system" style="ellipse;" value="Chuyển trạng thái Inactive" vertex="1">
+      <mxGeometry height="60" width="380" x="769.5" y="450" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_disable" parent="system" style="ellipse;" value="Disable đăng nhập" vertex="1">
+      <mxGeometry height="60" width="329.33333333333326" x="769.4936666666665" y="540" as="geometry" />
+    </mxCell>
+    <mxCell id="8" edge="1" parent="system" source="uc_list" style="dashed=1;endArrow=open;strokeWidth=0;" target="uc_search" value="&lt;&lt;extend&gt;&gt;">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="9" edge="1" parent="system" source="uc_detail" style="dashed=1;endArrow=open;strokeWidth=0;" target="uc_search" value="&lt;&lt;extend&gt;&gt;">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="10" edge="1" parent="system" source="uc_edit" style="dashed=1;endArrow=open;strokeWidth=0;" target="uc_update" value="&lt;&lt;extend&gt;&gt;">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="11" edge="1" parent="system" source="uc_delete" style="dashed=1;endArrow=open;strokeWidth=0;" target="uc_update" value="&lt;&lt;extend&gt;&gt;">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="15" edge="1" parent="system" source="uc_inactive" style="dashed=1;endArrow=open;strokeWidth=0;" target="uc_status" value="&lt;&lt;extend&gt;&gt;">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="16" edge="1" parent="system" source="uc_disable" style="dashed=1;endArrow=open;strokeWidth=0;" target="uc_status" value="&lt;&lt;extend&gt;&gt;">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="17" edge="1" parent="1" source="admin" style="endArrow=none;strokeWidth=0;" target="uc_main">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_main" parent="1" style="ellipse;fontStyle=1;" value="Quản lý người dùng" vertex="1">
+      <mxGeometry height="70" width="373.3333333333333" x="640.0033333333332" y="1200" as="geometry" />
+    </mxCell>
+    <mxCell id="7" edge="1" parent="1" source="uc_main" style="dashed=1;endArrow=open;strokeWidth=0;" target="uc_status" value="&lt;&lt;include&gt;&gt;">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="6" edge="1" parent="1" source="uc_main" style="dashed=1;endArrow=open;strokeWidth=0;" target="uc_permission" value="&lt;&lt;include&gt;&gt;">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="5" edge="1" parent="1" source="uc_main" style="dashed=1;endArrow=open;strokeWidth=0;" target="uc_sort" value="&lt;&lt;include&gt;&gt;">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="4" edge="1" parent="1" source="uc_main" style="dashed=1;endArrow=open;strokeWidth=0;" target="uc_update" value="&lt;&lt;include&gt;&gt;">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="3" edge="1" parent="1" source="uc_main" style="dashed=1;endArrow=open;strokeWidth=0;" target="uc_search" value="&lt;&lt;include&gt;&gt;">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="2" edge="1" parent="1" source="uc_main" style="dashed=1;endArrow=open;strokeWidth=0;" target="uc_login" value="&lt;&lt;include&gt;&gt;">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_permission" parent="1" style="ellipse;" value="Phân quyền người dùng" vertex="1">
+      <mxGeometry height="60" width="373.3333333333333" x="779.9966666666667" y="1580" as="geometry" />
+    </mxCell>
+    <mxCell id="13" edge="1" parent="1" source="uc_remove_role" style="dashed=1;endArrow=open;strokeWidth=0;" target="uc_permission" value="&lt;&lt;extend&gt;&gt;">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="12" edge="1" parent="1" source="uc_add_role" style="dashed=1;endArrow=open;strokeWidth=0;" target="uc_permission" value="&lt;&lt;extend&gt;&gt;">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_add_role" parent="1" style="ellipse;" value="Thêm quyền" vertex="1">
+      <mxGeometry height="60" width="266.66666666666663" x="1209.9966666666667" y="1650" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_remove_role" parent="1" style="ellipse;" value="Bỏ quyền" vertex="1">
+      <mxGeometry height="60" width="266.66666666666663" x="1190" y="1540" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_active" parent="1" style="ellipse;" value="Chuyển trạng thái Active" vertex="1">
+      <mxGeometry height="60" width="346.66666666666663" x="1619.9966666666667" y="1550" as="geometry" />
+    </mxCell>
+    <mxCell id="14" edge="1" parent="1" source="uc_active" style="dashed=1;endArrow=open;strokeWidth=0;" target="uc_status" value="&lt;&lt;extend&gt;&gt;">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>

@@ -1,0 +1,49 @@
+1️⃣ Build the Docker image
+
+If your Dockerfile_my_image is in the current directory:
+
+docker build -f Dockerfile_my_image -t my-snipeit .
+
+
+Explanation:
+
+-f Dockerfile_my_image → tells Docker which Dockerfile to use.
+
+-t my-snipeit → tags the image as my-snipeit.
+
+. → build context (current directory).
+
+2️⃣ Update your docker-compose.yml to use your image
+
+In your docker-compose.yml, change:
+
+app:
+  image: snipe/snipe-it:latest
+
+
+to:
+
+app:
+  image: my-snipeit
+
+3️⃣ Start containers using the new image
+
+If you’re starting fresh:
+
+docker compose up -d --build
+
+
+--build → forces Docker Compose to rebuild the image if needed.
+
+Or if you only want to rebuild your app container:
+
+docker compose up -d --build app
+
+4️⃣ Verify
+
+
+docker exec -it snipeit-app bash
+php artisan config:clear
+php artisan view:clear
+php artisan cache:clear
+exit

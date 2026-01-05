@@ -1,0 +1,58 @@
+version: "3.8"
+
+services:
+  app:
+    image: my-snipeit
+    container_name: snipeit-app
+    depends_on:
+      - db
+    ports:
+      - "8080:80"
+    environment:
+      APP_KEY: ${APP_KEY}
+      APP_URL: ${APP_URL}
+      APP_ENV: production
+      APP_DEBUG: false
+
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+
+    restart: unless-stopped
+
+  db:
+    image: mariadb:10.6   # phiên bản được Snipe-IT khuyến nghị
+    container_name: snipeit-db
+    command: --transaction-isolation=READ-COMMITTED --log-bin=mysqld-bin --binlog-format=ROW
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    restart: unless-stopped
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: snipeit-phpmyadmin
+    depends_on:
+      - db
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root
+      UPLOAD_LIMIT: 200M
+    restart: unless-stopped
+
+volumes:
+  db_data:
+  snipeit_storage:
+  snipeit_uploads:

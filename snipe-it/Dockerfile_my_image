@@ -1,0 +1,9 @@
+FROM snipe/snipe-it:latest
+
+# Copy your customized view files
+COPY resources/views/layouts/basic.blade.php /var/www/html/resources/views/layouts/basic.blade.php
+
+COPY resources/views/layouts/default.blade.php /var/www/html/resources/views/layouts/default.blade.php
+
+# Copy your custom image
+COPY public/img /var/www/html/public/img

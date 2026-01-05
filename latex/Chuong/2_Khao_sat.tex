@@ -1,0 +1,451 @@
+\documentclass[../DoAn.tex]{subfiles}
+\begin{document}
+\section{Khảo sát hiện trạng}
+\label{section:2.1}
+
+Hoạt động quản lý tài sản tại các trung tâm giảng dạy tiếng Anh hiện nay chủ yếu phục vụ cho công tác giảng dạy và vận hành hằng ngày, bao gồm quản lý phòng học, thiết bị giảng dạy, máy tính, máy chiếu, bàn ghế và các công cụ hỗ trợ học tập khác. Tài sản có giá trị tương đối lớn, được sử dụng với tần suất cao và thường xuyên luân chuyển giữa các phòng học, lớp học hoặc giáo viên.
+
+Qua khảo sát thực tế, công tác quản lý tài sản tại nhiều trung tâm vẫn đang được thực hiện bằng phương pháp thủ công hoặc bán tự động, chẳng hạn như ghi chép sổ sách hoặc sử dụng bảng tính. Các phương pháp này chỉ đáp ứng được nhu cầu quản lý cơ bản trong giai đoạn đầu, tuy nhiên khi quy mô trung tâm mở rộng, số lượng tài sản tăng lên thì bắt đầu bộc lộ nhiều hạn chế. Việc cập nhật thông tin tài sản không kịp thời dễ dẫn đến sai lệch dữ liệu, khó theo dõi tình trạng sử dụng, lịch sử mượn trả hoặc bảo trì thiết bị.
+
+Ngoài ra, các hệ thống quản lý hiện có tại trung tâm thường tập trung vào quản lý học viên và khóa học, trong khi chức năng quản lý tài sản chưa được đầu tư đúng mức hoặc chỉ tồn tại dưới dạng module đơn giản. Điều này gây khó khăn cho công tác thống kê, báo cáo và hỗ trợ ra quyết định của ban quản lý.
+
+Từ hiện trạng trên, có thể thấy nhu cầu cấp thiết về một hệ thống quản lý tài sản tập trung, cho phép theo dõi đầy đủ thông tin tài sản, kiểm soát quá trình sử dụng và hỗ trợ quản lý hiệu quả trong môi trường trung tâm giảng dạy tiếng Anh.
+
+
+\section{Tổng quan chức năng}
+\label{section:2.2}
+
+Hệ thống quản lý tài sản cho trung tâm giảng dạy tiếng Anh được xây dựng nhằm hỗ trợ quản lý tập trung toàn bộ tài sản của trung tâm, từ khâu khai báo, phân loại đến theo dõi quá trình sử dụng và bảo trì. Hệ thống cho phép người quản lý dễ dàng nắm bắt tình trạng hiện tại của tài sản, giảm thiểu thất thoát và nâng cao hiệu quả khai thác.
+
+Về tổng thể, hệ thống cung cấp các nhóm chức năng chính bao gồm quản lý danh mục tài sản, quản lý phòng học và vị trí sử dụng, quản lý người dùng và phân quyền, theo dõi mượn trả và tình trạng tài sản, cũng như hỗ trợ thống kê và báo cáo. Các chức năng này được thiết kế ở mức tổng quan, đảm bảo đáp ứng đầy đủ yêu cầu nghiệp vụ của trung tâm mà vẫn dễ sử dụng và dễ mở rộng trong tương lai.
+
+Chi tiết các chức năng sẽ được trình bày thông qua biểu đồ use case tổng quát và các biểu đồ use case phân rã trong các mục tiếp theo.
+\ref{section:2.3}.
+
+\subsection{Biểu đồ use case tổng quát}
+\label{subsection:2.2.1}
+
+Biểu đồ Use Case tổng quát được xây dựng nhằm mô tả các chức năng nghiệp vụ chính của hệ thống quản lý tài sản và mối quan hệ tương tác giữa các tác nhân với hệ thống. Thông qua biểu đồ này, có thể hình dung một cách tổng thể phạm vi chức năng mà hệ thống cung cấp, cũng như trách nhiệm của từng tác nhân tham gia trong quá trình vận hành.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Hinhve/usecase_tong_quat.png}
+    \caption{Biểu đồ Use Case tổng quát của hệ thống quản lý tài sản}
+    \label{fig:usecase_tong_quat}
+\end{figure}
+
+Như thể hiện trong Hình~\ref{fig:usecase_tong_quat}, hệ thống quản lý tài sản có hai tác nhân chính là \textit{Admin} và \textit{User}. 
+
+Admin là tác nhân có vai trò quản trị hệ thống, chịu trách nhiệm cấu hình và kiểm soát toàn bộ dữ liệu cũng như quy trình nghiệp vụ. Cụ thể, Admin thực hiện các chức năng quản lý tài sản (bao gồm thiết bị và các thành phần liên quan), quản lý người dùng, quản lý thông tin địa điểm và cơ sở giáo dục, đồng thời thực hiện các nghiệp vụ quan trọng như cấp phát tài sản cho người sử dụng và thu hồi tài sản khi kết thúc vòng đời sử dụng. Ngoài ra, Admin còn đảm nhiệm việc phân quyền, qua đó quyết định phạm vi chức năng mà từng người dùng được phép truy cập và sử dụng trong hệ thống.
+
+User là tác nhân đại diện cho người sử dụng tài sản trong thực tế. User có thể tra cứu và xem thông tin các tài sản được cấp phát cho mình, theo dõi trạng thái sử dụng tài sản, cũng như thực hiện yêu cầu hoàn trả tài sản khi không còn nhu cầu sử dụng. Tùy theo quyền hạn được Admin cấp, User có thể được mở rộng vai trò để truy cập và xem thêm các thông tin liên quan như danh sách tài sản, thông tin địa điểm hoặc thông tin về cơ sở giáo dục, phục vụ cho nhu cầu tra cứu và quản lý trong phạm vi cho phép.
+
+Nhìn chung, biểu đồ Use Case tổng quát đóng vai trò làm nền tảng cho các bước phân tích chi tiết tiếp theo, giúp đảm bảo rằng toàn bộ các yêu cầu chức năng của hệ thống đều được xác định rõ ràng và nhất quán trước khi tiến hành thiết kế và triển khai.
+
+
+\subsection{Biểu đồ use case phân rã Quản lý tài sản}
+\label{subsection:2.2.2}
+
+Trong biểu đồ Use Case tổng quan đã trình bày ở Mục~\ref{subsection:2.2.1}, \textit{Quản lý tài sản} là một use case mức cao, đóng vai trò trung tâm trong hệ thống quản lý tài sản. Để làm rõ hơn các chức năng nghiệp vụ cụ thể cũng như mối quan hệ giữa chúng, use case này được tiến hành phân rã thành các use case thành phần ở mức chi tiết hơn.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Hinhve/usecase_phan_ra_taisan.png}
+    \caption{Biểu đồ Use Case phân rã use case Quản lý tài sản}
+    \label{fig:usecase_phan_ra_taisan}
+\end{figure}
+
+Như thể hiện trong Hình~\ref{fig:usecase_phan_ra_taisan}, use case \textit{Quản lý tài sản} được phân rã thông qua các quan hệ \texttt{<<include>>} và \texttt{<<extend>>} nhằm phản ánh đầy đủ các nghiệp vụ phát sinh trong quá trình quản lý tài sản.
+
+Các chức năng \textit{Tạo mới tài sản}, \textit{Cập nhật tài sản}, \textit{Cấp phát tài sản}, \textit{Thu hồi tài sản} và \textit{Tìm kiếm tài sản} là các use case bắt buộc, được liên kết với use case \textit{Quản lý tài sản} thông qua quan hệ \texttt{<<include>>}. Điều này cho thấy các chức năng này luôn được thực hiện trong phạm vi nghiệp vụ quản lý tài sản của hệ thống.
+
+Trong quá trình thực hiện use case \textit{Tìm kiếm tài sản}, hệ thống có thể phát sinh các chức năng mở rộng như \textit{Xem danh sách tài sản} và \textit{Xem thông tin chi tiết tài sản}. Các chức năng này được mô hình hóa bằng quan hệ \texttt{<<extend>>}, phản ánh việc chúng chỉ xảy ra khi có yêu cầu cụ thể từ người dùng trong quá trình tìm kiếm.
+
+Tương tự, khi thực hiện use case \textit{Cập nhật tài sản}, người dùng có thể lựa chọn các hành vi mở rộng như \textit{Sửa tài sản} hoặc \textit{Xóa tài sản}. Việc sử dụng quan hệ \texttt{<<extend>>} trong trường hợp này cho phép mô tả linh hoạt các kịch bản nghiệp vụ, đồng thời đảm bảo tính rõ ràng và dễ mở rộng của mô hình.
+
+Cách tiếp cận phân rã use case như trên phản ánh sát với nghiệp vụ quản lý tài sản, đồng thời giúp hệ thống hóa các chức năng một cách logic, tạo cơ sở cho việc phân tích chi tiết và thiết kế hệ thống ở các bước tiếp theo.
+
+\subsection{Biểu đồ use case phân rã chức năng Quản lý người dùng}
+\label{subsection:2.2.3}
+
+Trong biểu đồ Use Case tổng quan đã trình bày ở Mục~\ref{subsection:2.2.1}, \textit{Quản lý người dùng} là một use case mức cao, thuộc nhóm chức năng quản trị hệ thống, cho phép người quản trị thực hiện các thao tác liên quan đến quản lý thông tin, quyền hạn và trạng thái của người dùng trong hệ thống.
+
+Để mô tả chi tiết hơn các nghiệp vụ phát sinh cũng như mối quan hệ giữa các chức năng thành phần, use case \textit{Quản lý người dùng} được tiến hành phân rã thành các use case con thông qua các quan hệ \texttt{<<include>>} và \texttt{<<extend>>}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Hinhve/phanrausecasequantri.png}
+    \caption{Biểu đồ Use Case phân rã use case Quản lý người dùng}
+    \label{fig:usecase_phan_ra_quan_ly_nguoi_dung}
+\end{figure}
+
+Như thể hiện trong Hình~\ref{fig:usecase_phan_ra_quan_ly_nguoi_dung}, để thực hiện use case \textit{Quản lý người dùng}, hệ thống yêu cầu người quản trị phải thực hiện \textit{Đăng nhập}. Sau khi đăng nhập thành công, người quản trị có thể thực hiện các chức năng bắt buộc như \textit{Tìm kiếm người dùng}, \textit{Cập nhật người dùng}, \textit{Sắp xếp người dùng}, \textit{Phân quyền người dùng} và \textit{Quản lý trạng thái người dùng}. Các chức năng này được liên kết với use case \textit{Quản lý người dùng} thông qua quan hệ \texttt{<<include>>}, thể hiện rằng chúng là các nghiệp vụ cốt lõi trong quá trình quản trị người dùng của hệ thống.
+
+Trong quá trình thực hiện use case \textit{Tìm kiếm người dùng}, hệ thống có thể phát sinh các hành vi mở rộng như \textit{Xem danh sách người dùng} và \textit{Xem thông tin chi tiết người dùng}. Các chức năng này được mô hình hóa bằng quan hệ \texttt{<<extend>>}, phản ánh việc chúng chỉ được thực hiện khi có yêu cầu cụ thể từ người quản trị trong quá trình tìm kiếm.
+
+Tương tự, khi thực hiện use case \textit{Cập nhật người dùng}, người quản trị có thể lựa chọn các hành vi mở rộng như \textit{Sửa thông tin người dùng} hoặc \textit{Xóa người dùng}. Việc sử dụng quan hệ \texttt{<<extend>>} cho phép mô tả linh hoạt các kịch bản nghiệp vụ khác nhau trong quá trình cập nhật thông tin người dùng.
+
+Ngoài ra, use case \textit{Phân quyền người dùng} có thể phát sinh các chức năng mở rộng như \textit{Thêm quyền} hoặc \textit{Bỏ quyền} cho người dùng, trong khi use case \textit{Quản lý trạng thái người dùng} cho phép người quản trị thực hiện các hành vi như \textit{Kích hoạt tài khoản}, \textit{Vô hiệu hóa tài khoản} hoặc \textit{Cấm đăng nhập}. Các chức năng này giúp hệ thống kiểm soát chặt chẽ quyền truy cập và trạng thái hoạt động của người dùng, đảm bảo an toàn và tính nhất quán trong quá trình vận hành.
+
+Việc phân rã use case \textit{Quản lý người dùng} theo cách tiếp cận trên giúp làm rõ các nghiệp vụ quản trị, đồng thời tạo nền tảng cho việc phân tích chi tiết và thiết kế các thành phần chức năng của hệ thống ở các bước tiếp theo.
+
+\subsection{Biểu đồ use case phân rã chức năng Quản lý nhà cung cấp}
+\label{subsection:2.2.4}
+
+Trong biểu đồ Use Case tổng quan đã trình bày ở Mục~\ref{subsection:2.2.1}, \textit{Quản lý nhà cung cấp} là một use case mức cao, hỗ trợ nghiệp vụ quản lý thông tin các đơn vị cung cấp tài sản, thiết bị và vật tư cho hệ thống. Chức năng này đóng vai trò quan trọng trong việc theo dõi nguồn gốc tài sản và phục vụ công tác quản lý, kiểm toán sau này.
+
+Để làm rõ các nghiệp vụ cụ thể cũng như mối quan hệ giữa các chức năng liên quan, use case \textit{Quản lý nhà cung cấp} được tiến hành phân rã thành các use case thành phần thông qua các quan hệ \texttt{<<include>>} và \texttt{<<extend>>}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Hinhve/usecase_quanlyncc.png}
+    \caption{Biểu đồ Use Case phân rã use case Quản lý nhà cung cấp}
+    \label{fig:usecase_phan_ra_quan_ly_ncc}
+\end{figure}
+
+Như thể hiện trong Hình~\ref{fig:usecase_phan_ra_quan_ly_ncc}, để thực hiện use case \textit{Quản lý nhà cung cấp}, người quản trị có thể thực hiện các chức năng bắt buộc như \textit{Tạo mới nhà cung cấp}, \textit{Cập nhật nhà cung cấp}, \textit{Xóa nhà cung cấp} và \textit{Tìm kiếm nhà cung cấp}. Các chức năng này được liên kết với use case mức cao thông qua quan hệ \texttt{<<include>>}, cho thấy đây là các nghiệp vụ cốt lõi trong quá trình quản lý nhà cung cấp của hệ thống.
+
+Trong quá trình thực hiện use case \textit{Tìm kiếm nhà cung cấp}, hệ thống có thể phát sinh các hành vi mở rộng như \textit{Xem danh sách nhà cung cấp} và \textit{Xem thông tin chi tiết nhà cung cấp}. Các chức năng này được mô hình hóa bằng quan hệ \texttt{<<extend>>}, phản ánh việc chúng chỉ được thực hiện khi người quản trị có nhu cầu xem chi tiết kết quả tìm kiếm.
+
+Việc phân rã use case \textit{Quản lý nhà cung cấp} theo cách tiếp cận trên giúp hệ thống hóa các nghiệp vụ quản lý nguồn cung, đồng thời tạo tiền đề cho việc liên kết thông tin nhà cung cấp với các chức năng quản lý tài sản trong hệ thống.
+
+\subsection{Biểu đồ use case phân rã chức năng Quản lý tài khoản}
+\label{subsection:2.2.5}
+
+Trong hệ thống quản lý tài sản, \textit{Quản lý tài khoản} là một use case mức cao, liên quan trực tiếp đến việc đảm bảo an toàn, bảo mật và kiểm soát quyền truy cập của người dùng khi sử dụng hệ thống. Use case này cho phép người dùng quản lý thông tin tài khoản cá nhân và thực hiện các thao tác bảo mật cần thiết.
+
+Để làm rõ các chức năng nghiệp vụ cụ thể, use case \textit{Quản lý tài khoản} được tiến hành phân rã thành các use case thành phần thông qua các quan hệ \texttt{<<include>>} và \texttt{<<extend>>}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Hinhve/usecase_quanlytaikhoan.png}
+    \caption{Biểu đồ Use Case phân rã use case Quản lý tài khoản}
+    \label{fig:usecase_phan_ra_quan_ly_tai_khoan}
+\end{figure}
+
+Như thể hiện trong Hình~\ref{fig:usecase_phan_ra_quan_ly_tai_khoan}, use case \textit{Quản lý tài khoản} bao gồm các chức năng bắt buộc như \textit{Xem thông tin tài khoản} và \textit{Cập nhật thông tin tài khoản}. Các chức năng này được liên kết với use case mức cao thông qua quan hệ \texttt{<<include>>}, thể hiện rằng chúng là các thao tác cơ bản mà người dùng có thể thực hiện đối với tài khoản của mình.
+
+Trong quá trình cập nhật thông tin tài khoản, hệ thống có thể phát sinh các chức năng mở rộng như \textit{Thay đổi mật khẩu} hoặc \textit{Cập nhật thông tin cá nhân}. Các chức năng này được mô hình hóa bằng quan hệ \texttt{<<extend>>}, phản ánh việc người dùng chỉ thực hiện chúng khi có nhu cầu cụ thể.
+
+Việc phân rã use case \textit{Quản lý tài khoản} giúp làm rõ các kịch bản sử dụng liên quan đến bảo mật và quản lý thông tin cá nhân, đồng thời góp phần nâng cao tính an toàn và khả năng kiểm soát truy cập của hệ thống.
+
+Ví dụ, một hệ thống quản lý thư viện có quy trình nghiệp vụ mượn trả với mô tả sơ bộ như sau: Sinh viên làm thẻ mượn, sau đó sinh viên đăng ký mượn sách, thủ thư cho mượn, và cuối cùng sinh viên trả lại sách cho thư viện. Một hệ thống có thể có một vài quy trình nghiệp vụ quan trọng như vậy.
+\subsection{Quy trình nghiệp vụ}
+\label{subsection:2.2.3}
+
+Trong hệ thống, một số nghiệp vụ quan trọng được xây dựng dựa trên sự kết hợp của nhiều use case nhằm đảm bảo tính xuyên suốt và nhất quán trong quá trình vận hành. Phần này trình bày các quy trình nghiệp vụ tiêu biểu cùng với biểu đồ hoạt động minh họa.
+
+\subsubsection{Quy trình nghiệp vụ đăng nhập hệ thống}
+
+Quy trình nghiệp vụ đăng nhập cho phép người dùng truy cập vào hệ thống theo đúng quyền hạn được cấp. Nghiệp vụ này bao gồm các hoạt động xác thực thông tin đăng nhập, kiểm tra trạng thái tài khoản và khởi tạo phiên làm việc cho người dùng.
+
+Người dùng bắt đầu bằng việc nhập tên đăng nhập và mật khẩu. Hệ thống tiến hành kiểm tra tính hợp lệ của thông tin đăng nhập. Nếu thông tin không chính xác hoặc tài khoản đang bị vô hiệu hóa, hệ thống sẽ thông báo lỗi và yêu cầu người dùng nhập lại. Trường hợp thông tin hợp lệ, hệ thống xác định vai trò và quyền hạn của người dùng, sau đó cho phép truy cập vào các chức năng tương ứng.
+
+Biểu đồ hoạt động của quy trình nghiệp vụ đăng nhập được thể hiện trong Hình~\ref{fig:bieu_do_hoat_dong_dang_nhap}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Hinhve/bieu_do_hoat_dong_dang_nhap.png}
+    \caption{Biểu đồ hoạt động quy trình nghiệp vụ đăng nhập}
+    \label{fig:bieu_do_hoat_dong_dang_nhap}
+\end{figure}
+
+\subsubsection{Quy trình nghiệp vụ phân quyền người dùng}
+
+Quy trình nghiệp vụ phân quyền đảm bảo việc quản lý và kiểm soát quyền truy cập của người dùng trong hệ thống thông qua các nhóm quyền. Nghiệp vụ này được thực hiện bởi người quản trị hệ thống và kết hợp nhiều use case như tạo nhóm quyền, gán quyền và gán người dùng vào nhóm.
+
+Quy trình bắt đầu khi quản trị viên tạo mới một nhóm quyền và nhập các thông tin cần thiết. Sau đó, quản trị viên thực hiện gán hoặc loại bỏ các quyền chức năng cho nhóm quyền này. Hệ thống tiến hành kiểm tra tính hợp lệ của dữ liệu. Nếu thông tin không hợp lệ, hệ thống thông báo lỗi và yêu cầu điều chỉnh. Khi dữ liệu hợp lệ, nhóm quyền được tạo thành công.
+
+Tiếp theo, quản trị viên lựa chọn người dùng từ danh sách và gán người dùng vào nhóm quyền phù hợp. Khi quá trình hoàn tất, người dùng sẽ được áp dụng các quyền tương ứng với nhóm quyền đã được gán.
+
+Biểu đồ hoạt động của quy trình nghiệp vụ phân quyền được minh họa trong Hình~\ref{fig:bieudohoatdongphanquyen}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Hinhve/bieudohoatdongphanquyen.png}
+    \caption{Biểu đồ hoạt động quy trình nghiệp vụ phân quyền}
+    \label{fig:bieudohoatdongphanquyen}
+\end{figure}
+
+\subsubsection{Quy trình nghiệp vụ quản lý tài sản}
+
+Quy trình nghiệp vụ quản lý tài sản cho phép hệ thống kiểm soát toàn bộ vòng đời của tài sản, từ khâu tạo mới, cập nhật thông tin đến việc cấp phát và thu hồi tài sản. Nghiệp vụ này kết hợp nhiều use case liên quan đến tài sản và được thực hiện chủ yếu bởi người quản trị.
+
+Quy trình bắt đầu khi quản trị viên tạo mới một tài sản và nhập các thông tin chi tiết như tên tài sản, loại tài sản, trạng thái và vị trí lưu trữ. Hệ thống kiểm tra tính hợp lệ của dữ liệu trước khi lưu thông tin tài sản. Sau khi tài sản được tạo thành công, quản trị viên có thể thực hiện các thao tác quản lý tiếp theo như cập nhật thông tin, cấp phát tài sản cho người dùng, địa điểm hoặc tài sản khác.
+
+Trong trường hợp cấp phát tài sản, hệ thống kiểm tra trạng thái hiện tại của tài sản. Nếu tài sản không khả dụng, hệ thống sẽ thông báo lỗi. Ngược lại, nếu tài sản hợp lệ, hệ thống cập nhật trạng thái và lịch sử sử dụng của tài sản. Quy trình kết thúc khi thao tác quản lý tài sản được hoàn tất.
+
+Biểu đồ hoạt động của quy trình nghiệp vụ quản lý tài sản được trình bày trong Hình~\ref{fig:bieu_do_hoat_dong_qlts}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Hinhve/bieu_do_hoat_dong_qlts.png}
+    \caption{Biểu đồ hoạt động quy trình nghiệp vụ quản lý tài sản}
+    \label{fig:bieu_do_hoat_dong_qlts}
+\end{figure}
+\section{Đặc tả chức năng}
+\label{section:2.3}
+
+Trong phần này, hệ thống lựa chọn các use case quan trọng để đặc tả chi tiết. Mỗi use case được mô tả nhằm làm rõ cách hệ thống vận hành, các điều kiện ràng buộc và các tình huống phát sinh trong quá trình sử dụng.
+
+\subsection{Đặc tả use case: Quản lý tài khoản}
+
+Use case \textbf{Quản lý tài khoản} mô tả quá trình tạo lập, phân quyền và quản lý vòng đời tài khoản người dùng trong hệ thống. Use case này đóng vai trò nền tảng, đảm bảo người dùng có thể truy cập và sử dụng các chức năng đúng theo quyền hạn được cấp.
+
+\begin{table}[H]
+\centering
+\caption{Đặc tả use case Quản lý tài khoản}
+\label{tab:usecase_quanlytaikhoan}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|p{4cm}|p{10cm}|}
+\hline
+\textbf{Tên trường} & \textbf{Nội dung} \\ \hline
+
+Tên use case &
+Quản lý tài khoản \\ \hline
+
+Mô tả &
+Cho phép quản trị viên tạo mới tài khoản người dùng, phân quyền thông qua nhóm quyền, quản lý trạng thái tài khoản và hỗ trợ người dùng đăng nhập, khôi phục mật khẩu để sử dụng các chức năng của hệ thống. \\ \hline
+
+Tác nhân &
+Quản trị viên (Admin), Người dùng (User) \\ \hline
+
+Tiền điều kiện &
+Quản trị viên đã đăng nhập hệ thống và có quyền quản lý tài khoản, nhóm quyền và phân quyền. \\ \hline
+
+Hậu điều kiện &
+Người dùng có thể đăng nhập vào hệ thống bằng tài khoản đã được tạo và sử dụng các chức năng tương ứng với quyền được phân công. \\ \hline
+
+Luồng sự kiện chính &
+\begin{itemize}
+    \item Admin đăng nhập vào hệ thống.
+    \item Admin truy cập chức năng quản lý tài khoản.
+    \item Admin tạo tài khoản mới và nhập thông tin email, mật khẩu.
+    \item Admin tạo hoặc chọn nhóm quyền tương ứng cho tài khoản.
+    \item Admin phân quyền cho nhóm quyền.
+    \item Admin gắn tài khoản vào nhóm quyền.
+    \item Người dùng đăng nhập bằng tài khoản đã được tạo.
+    \item Người dùng sử dụng các chức năng theo quyền được phân công.
+    \item Trường hợp quên mật khẩu, người dùng sử dụng email đăng ký để lấy lại mật khẩu hoặc liên hệ Admin để reset mật khẩu.
+\end{itemize}
+\\ \hline
+
+Luồng sự kiện phụ &
+\begin{itemize}
+    \item Email đã tồn tại trong hệ thống $\Rightarrow$ hệ thống từ chối tạo tài khoản.
+    \item Người dùng nhập sai thông tin đăng nhập quá 20 lần $\Rightarrow$ hệ thống khóa tài khoản.
+    \item Người dùng nghỉ làm $\Rightarrow$ Admin thực hiện xóa hoặc vô hiệu hóa (disable) tài khoản.
+\end{itemize}
+\\ \hline
+
+\end{tabular}
+\end{table}
+\subsubsection{Biểu đồ hoạt động use case Quản lý tài khoản}
+
+Biểu đồ hoạt động dưới đây mô tả luồng xử lý tổng quát của use case quản lý tài khoản, bao gồm các bước tạo tài khoản, phân quyền, đăng nhập và xử lý các tình huống phát sinh như quên mật khẩu hoặc khóa tài khoản.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Hinhve/bieudohoatdong_qlytaikhoan_extend.png}
+    \caption{Biểu đồ hoạt động use case Quản lý tài khoản}
+    \label{fig:bieu_do_hoat_dong_quanlytaikhoan}
+\end{figure}
+
+\hfill
+\subsection{Đặc tả use case: Quản lý tài sản}
+\label{subsection:2.3.1}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|p{4cm}|p{11cm}|}
+\hline
+\textbf{Tên trường} & \textbf{Nội dung} \\
+\hline
+
+Tên use case &
+Quản lý tài sản \\
+\hline
+
+Mô tả &
+Use case này cho phép người dùng có quyền (Admin hoặc tài khoản được phân quyền) thực hiện các nghiệp vụ liên quan đến tài sản trong hệ thống như tạo mới tài sản, theo dõi thông tin và trạng thái tài sản, tiếp nhận yêu cầu cấp phát hoặc hoàn trả tài sản từ người dùng, và duyệt các yêu cầu đó. Use case đảm bảo tài sản được quản lý tập trung, minh bạch và đúng trạng thái sử dụng. \\
+\hline
+
+Tác nhân &
+Admin, User (được phân quyền quản lý hoặc sử dụng tài sản) \\
+\hline
+
+Tiền điều kiện &
+Admin hoặc tài khoản người dùng đã được phân quyền tạo và quản lý tài sản; người dùng đã đăng nhập hợp lệ vào hệ thống. \\
+\hline
+
+Hậu điều kiện &
+Thông tin tài sản được lưu trữ và cập nhật trong hệ thống; người dùng có thể xem thông tin tài sản, gửi yêu cầu cấp phát hoặc hoàn trả tài sản; trạng thái tài sản được cập nhật tương ứng với kết quả xử lý yêu cầu. \\
+\hline
+
+Luồng sự kiện chính &
+\begin{itemize}
+    \item Admin hoặc user có quyền đăng nhập vào hệ thống.
+    \item Tác nhân chọn chức năng quản lý tài sản.
+    \item Admin thực hiện tạo mới tài sản và nhập đầy đủ thông tin tài sản.
+    \item Hệ thống lưu tài sản và hiển thị trong danh sách quản lý.
+    \item User đăng nhập hệ thống và xem danh sách tài sản.
+    \item User gửi yêu cầu cấp phát hoặc hoàn trả tài sản.
+    \item Admin tiếp nhận và duyệt yêu cầu cấp phát.
+    \item Hệ thống cập nhật trạng thái tài sản và hoàn thành nghiệp vụ.
+\end{itemize} \\
+\hline
+
+Luồng sự kiện phụ &
+\begin{itemize}
+    \item Tài sản đã được cấp phát cho người khác: hệ thống từ chối yêu cầu cấp phát và thông báo thất bại cho người dùng.
+    \item Tài sản đang ở trạng thái bảo trì hoặc sửa chữa: hệ thống không cho phép cấp phát và hiển thị thông báo lỗi phù hợp.
+\end{itemize} \\
+\hline
+
+\end{tabular}
+\caption{Đặc tả use case Quản lý tài sản}
+\end{table}
+\hfill
+\subsection{Đặc tả use case: Quản lý phòng học}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|p{4cm}|p{11cm}|}
+\hline
+\textbf{Tên trường} & \textbf{Nội dung} \\
+\hline
+
+Tên use case &
+Quản lý phòng học \\
+\hline
+
+Mô tả &
+Use case này cho phép Admin hoặc tài khoản được phân quyền thực hiện các nghiệp vụ quản lý phòng học trong hệ thống, bao gồm tạo mới, cập nhật, xóa phòng học và theo dõi thông tin phòng. Người dùng có thể xem thông tin phòng học và danh sách các tài sản được cấp phát cho từng phòng, từ đó phục vụ cho công tác quản lý, sử dụng và kiểm kê tài sản theo địa điểm cụ thể. \\
+\hline
+
+Tác nhân &
+Admin, User (được phân quyền) \\
+\hline
+
+Tiền điều kiện &
+Admin hoặc tài khoản người dùng đã được phân quyền tạo và quản lý phòng học; người dùng đã đăng nhập hợp lệ vào hệ thống. \\
+\hline
+
+Hậu điều kiện &
+Thông tin phòng học được lưu trữ hoặc cập nhật trong hệ thống; người dùng có thể xem thông tin phòng học và danh sách tài sản được cấp phát theo phòng; các yêu cầu cấp phát hoặc hoàn trả tài sản theo phòng học được thực hiện dựa trên dữ liệu phòng học đã quản lý. \\
+\hline
+
+Luồng sự kiện chính &
+\begin{itemize}
+    \item Admin hoặc user có quyền đăng nhập vào hệ thống.
+    \item Tác nhân truy cập chức năng quản lý phòng học.
+    \item Admin thực hiện tạo mới phòng học và nhập thông tin phòng.
+    \item Hệ thống kiểm tra và lưu thông tin phòng học.
+    \item Trường hợp thông tin phòng học thay đổi, Admin chỉnh sửa thông tin phòng học.
+    \item Trường hợp phòng học không còn tồn tại hoặc không sử dụng, Admin thực hiện xóa phòng học.
+    \item User đăng nhập hệ thống và xem thông tin phòng học.
+    \item Hệ thống hiển thị danh sách tài sản đã được cấp phát cho từng phòng học.
+\end{itemize} \\
+\hline
+
+Luồng sự kiện phụ &
+\begin{itemize}
+    \item Tên phòng học đã tồn tại trong hệ thống: hệ thống từ chối thao tác tạo phòng học và hiển thị thông báo lỗi, không cho phép cấp phát tài sản theo phòng học đó.
+\end{itemize} \\
+\hline
+
+\end{tabular}
+\caption{Đặc tả use case Quản lý phòng học}
+\end{table}
+\subsection{Đặc tả use case: Quản lý tiêu hao phẩm}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|p{4cm}|p{11cm}|}
+\hline
+\textbf{Tên trường} & \textbf{Nội dung} \\
+\hline
+
+Tên use case &
+Quản lý tiêu hao phẩm \\
+\hline
+
+Mô tả &
+Use case này cho phép Admin hoặc tài khoản được phân quyền thực hiện các nghiệp vụ quản lý tiêu hao phẩm trong hệ thống như tạo mới, theo dõi số lượng tồn kho và cấp phát tiêu hao phẩm. Người dùng có thể xem thông tin tiêu hao phẩm, gửi yêu cầu cấp phát theo số lượng cụ thể cho phòng học hoặc cho cá nhân, đồng thời thực hiện hoàn trả lại phần tiêu hao phẩm còn thừa sau khi sử dụng. \\
+\hline
+
+Tác nhân &
+Admin, User (được phân quyền) \\
+\hline
+
+Tiền điều kiện &
+Admin hoặc tài khoản người dùng đã được phân quyền tạo và quản lý danh sách tiêu hao phẩm; người dùng đã đăng nhập hợp lệ vào hệ thống. \\
+\hline
+
+Hậu điều kiện &
+Danh sách và số lượng tiêu hao phẩm được lưu trữ và cập nhật trong hệ thống; người dùng có thể xem thông tin tiêu hao phẩm và gửi yêu cầu cấp phát theo số lượng cho phòng học hoặc cá nhân; số lượng tiêu hao phẩm tồn kho được cập nhật tương ứng với các nghiệp vụ cấp phát và hoàn trả. \\
+\hline
+
+Luồng sự kiện chính &
+\begin{itemize}
+    \item Admin hoặc user có quyền đăng nhập vào hệ thống.
+    \item Tác nhân truy cập chức năng quản lý tiêu hao phẩm.
+    \item Admin thực hiện tạo mới tiêu hao phẩm và nhập các thông tin liên quan (tên, đơn vị tính, số lượng ban đầu).
+    \item Hệ thống lưu thông tin tiêu hao phẩm và hoàn thành quá trình tạo.
+    \item User đăng nhập hệ thống và xem danh sách tiêu hao phẩm.
+    \item User nhập số lượng tiêu hao phẩm muốn cấp phát theo phòng học hoặc theo cá nhân.
+    \item Hệ thống trừ số lượng tiêu hao phẩm tương ứng và ghi nhận việc sử dụng tiêu hao phẩm.
+    \item Sau khi sử dụng, nếu còn tiêu hao phẩm dư, user thực hiện bàn giao lại số lượng còn thừa cho Admin.
+    \item Hệ thống cập nhật lại số lượng tồn kho của tiêu hao phẩm.
+\end{itemize} \\
+\hline
+
+Luồng sự kiện phụ &
+\begin{itemize}
+    \item Số lượng tiêu hao phẩm trong kho không đủ so với số lượng yêu cầu: hệ thống từ chối yêu cầu cấp phát và hiển thị thông báo thất bại.
+\end{itemize} \\
+\hline
+
+\end{tabular}
+\caption{Đặc tả use case Quản lý tiêu hao phẩm}
+\end{table}
+
+\section{Yêu cầu phi chức năng}
+\label{section:2.4}
+
+Bên cạnh các yêu cầu chức năng đã được mô tả ở các mục trước, hệ thống quản lý tài sản cần đáp ứng một số yêu cầu phi chức năng nhằm đảm bảo hiệu quả vận hành, tính ổn định, khả năng mở rộng và đáp ứng tốt nhu cầu sử dụng thực tế. Các yêu cầu phi chức năng của hệ thống được phân thành các nhóm như sau:
+
+\subsection{Yêu cầu về hiệu năng}
+
+Hệ thống cần đảm bảo khả năng phản hồi nhanh và ổn định trong quá trình sử dụng. Các thao tác phổ biến như đăng nhập, xem danh sách tài sản, tìm kiếm, cấp phát hoặc hoàn trả tài sản phải được xử lý trong thời gian hợp lý, thông thường không vượt quá vài giây trong điều kiện tải bình thường. Hệ thống phải hỗ trợ đồng thời nhiều người dùng truy cập cùng lúc mà không làm suy giảm đáng kể hiệu năng. Ngoài ra, các chức năng tìm kiếm và lọc dữ liệu cần được tối ưu để xử lý tốt với tập dữ liệu lớn.
+
+\subsection{Yêu cầu về độ tin cậy và an toàn dữ liệu}
+
+Hệ thống phải đảm bảo tính toàn vẹn và nhất quán của dữ liệu trong mọi trường hợp. Các thao tác cập nhật dữ liệu như tạo tài sản, cấp phát, hoàn trả hoặc chỉnh sửa thông tin phải được ghi nhận chính xác và không gây mất mát dữ liệu. Hệ thống cần có cơ chế sao lưu dữ liệu định kỳ nhằm phòng tránh rủi ro do sự cố phần cứng hoặc lỗi hệ thống. Bên cạnh đó, các hoạt động quan trọng phải được ghi log kiểm toán để phục vụ việc theo dõi, truy vết và kiểm tra khi cần thiết.
+
+\subsection{Yêu cầu về bảo mật}
+
+Hệ thống cần đảm bảo an toàn thông tin người dùng và dữ liệu tài sản. Việc xác thực người dùng phải được thực hiện thông qua cơ chế đăng nhập với tài khoản và mật khẩu được mã hóa. Hệ thống phải hỗ trợ phân quyền chi tiết theo vai trò, đảm bảo người dùng chỉ có thể truy cập và thao tác trên các chức năng phù hợp với quyền hạn được cấp. Ngoài ra, hệ thống cần có cơ chế khóa tài khoản tạm thời khi phát hiện hành vi đăng nhập sai nhiều lần liên tiếp nhằm hạn chế nguy cơ tấn công.
+
+\subsection{Yêu cầu về tính dễ sử dụng}
+
+Giao diện người dùng cần được thiết kế trực quan, dễ hiểu và thân thiện, giúp người dùng nhanh chóng làm quen và sử dụng hệ thống mà không cần nhiều hướng dẫn phức tạp. Các chức năng thường xuyên sử dụng phải được bố trí hợp lý, dễ truy cập. Thông báo lỗi và trạng thái xử lý cần rõ ràng, giúp người dùng hiểu được nguyên nhân và cách khắc phục khi xảy ra sự cố.
+
+\subsection{Yêu cầu về khả năng mở rộng và bảo trì}
+
+Hệ thống cần được thiết kế theo hướng dễ mở rộng để có thể bổ sung thêm các chức năng mới trong tương lai như tích hợp thiết bị IoT, báo cáo nâng cao hoặc kết nối với các hệ thống khác. Kiến trúc hệ thống cần rõ ràng, tách biệt giữa các thành phần để thuận tiện cho việc bảo trì, nâng cấp và sửa lỗi. Mã nguồn phải tuân thủ các chuẩn lập trình và được tổ chức hợp lý nhằm giảm chi phí bảo trì lâu dài.
+
+\subsection{Yêu cầu về công nghệ và kỹ thuật}
+
+Hệ thống được xây dựng theo mô hình ứng dụng web, cho phép người dùng truy cập thông qua trình duyệt mà không cần cài đặt phần mềm bổ sung. Cơ sở dữ liệu cần đảm bảo khả năng lưu trữ lớn, hỗ trợ truy vấn hiệu quả và dễ dàng mở rộng. Các công nghệ sử dụng phải phổ biến, ổn định và có cộng đồng hỗ trợ tốt nhằm đảm bảo tính lâu dài của hệ thống.
+
+Các yêu cầu phi chức năng nêu trên đóng vai trò quan trọng trong việc đảm bảo hệ thống quản lý tài sản hoạt động ổn định, an toàn và đáp ứng tốt nhu cầu sử dụng thực tế của người dùng.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

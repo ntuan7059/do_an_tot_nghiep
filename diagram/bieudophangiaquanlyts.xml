@@ -1,0 +1,138 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Use Case - Phân rã Quản lý tài sản (Extend)">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Actor -->
+        <mxCell id="admin" value="Admin" style="shape=umlActor;" vertex="1" parent="1">
+          <mxGeometry x="40" y="340" width="60" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- System -->
+        <mxCell id="system" value="Quản lý tài sản"
+          style="rounded=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="180" y="80" width="900" height="640" as="geometry"/>
+        </mxCell>
+
+        <!-- Main UC -->
+        <mxCell id="uc_main" value="Quản lý tài sản"
+          style="ellipse;fontStyle=1;" vertex="1" parent="system">
+          <mxGeometry x="520" y="120" width="260" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- Include UC -->
+        <mxCell id="uc_create" value="Tạo tài sản"
+          style="ellipse;" vertex="1" parent="system">
+          <mxGeometry x="260" y="240" width="220" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="uc_update" value="Cập nhật tài sản"
+          style="ellipse;" vertex="1" parent="system">
+          <mxGeometry x="260" y="320" width="220" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="uc_checkout" value="Cấp phát tài sản (Check-out)"
+          style="ellipse;" vertex="1" parent="system">
+          <mxGeometry x="260" y="400" width="280" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="uc_checkin" value="Thu hồi tài sản (Check-in)"
+          style="ellipse;" vertex="1" parent="system">
+          <mxGeometry x="260" y="480" width="280" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="uc_search" value="Tìm kiếm tài sản"
+          style="ellipse;" vertex="1" parent="system">
+          <mxGeometry x="260" y="560" width="240" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Extend from Search -->
+        <mxCell id="uc_list" value="Xem danh sách tài sản"
+          style="ellipse;" vertex="1" parent="system">
+          <mxGeometry x="620" y="540" width="260" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="uc_detail" value="Xem thông tin chi tiết"
+          style="ellipse;" vertex="1" parent="system">
+          <mxGeometry x="620" y="610" width="260" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Extend from Update -->
+        <mxCell id="uc_edit" value="Sửa tài sản"
+          style="ellipse;" vertex="1" parent="system">
+          <mxGeometry x="620" y="300" width="220" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="uc_delete" value="Xóa tài sản"
+          style="ellipse;" vertex="1" parent="system">
+          <mxGeometry x="620" y="370" width="220" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Actor association -->
+        <mxCell edge="1" style="endArrow=none;" parent="1"
+                source="admin" target="uc_main">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Include -->
+        <mxCell edge="1" value="&lt;&lt;include&gt;&gt;"
+          style="dashed=1;endArrow=open;"
+          parent="system" source="uc_main" target="uc_create">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell edge="1" value="&lt;&lt;include&gt;&gt;"
+          style="dashed=1;endArrow=open;"
+          parent="system" source="uc_main" target="uc_update">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell edge="1" value="&lt;&lt;include&gt;&gt;"
+          style="dashed=1;endArrow=open;"
+          parent="system" source="uc_main" target="uc_checkout">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell edge="1" value="&lt;&lt;include&gt;&gt;"
+          style="dashed=1;endArrow=open;"
+          parent="system" source="uc_main" target="uc_checkin">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell edge="1" value="&lt;&lt;include&gt;&gt;"
+          style="dashed=1;endArrow=open;"
+          parent="system" source="uc_main" target="uc_search">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Extend -->
+        <mxCell edge="1" value="&lt;&lt;extend&gt;&gt;"
+          style="dashed=1;endArrow=open;"
+          parent="system" source="uc_list" target="uc_search">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell edge="1" value="&lt;&lt;extend&gt;&gt;"
+          style="dashed=1;endArrow=open;"
+          parent="system" source="uc_detail" target="uc_search">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell edge="1" value="&lt;&lt;extend&gt;&gt;"
+          style="dashed=1;endArrow=open;"
+          parent="system" source="uc_edit" target="uc_update">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell edge="1" value="&lt;&lt;extend&gt;&gt;"
+          style="dashed=1;endArrow=open;"
+          parent="system" source="uc_delete" target="uc_update">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

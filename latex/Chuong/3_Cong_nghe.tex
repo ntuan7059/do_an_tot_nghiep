@@ -1,0 +1,141 @@
+\documentclass[../DoAn.tex]{subfiles}
+\begin{document}
+
+\section{Công nghệ sử dụng trong quản lý tài khoản và phân quyền}
+\label{section:3.x}
+
+Quản lý tài khoản và phân quyền là một trong những chức năng cốt lõi của hệ thống quản lý tài sản, đóng vai trò quan trọng trong việc đảm bảo an toàn dữ liệu, kiểm soát truy cập và phân tách trách nhiệm giữa các nhóm người dùng. Trong \autoref{subsection:2.2.5}, hệ thống đã được phân tích với các tác nhân chính như Admin và User cùng các nghiệp vụ liên quan đến tạo tài khoản, đăng nhập, phân quyền và kiểm soát trạng thái người dùng. Do đó, việc lựa chọn công nghệ phù hợp để hiện thực các yêu cầu này là cần thiết nhằm đảm bảo tính bảo mật, linh hoạt và khả năng mở rộng của hệ thống.
+
+\subsection{Xác thực người dùng (Authentication)}
+
+\subsubsection{Vấn đề cần giải quyết}
+
+Hệ thống cần xác thực chính xác danh tính người dùng trước khi cho phép truy cập vào các chức năng quản lý tài sản, tiêu hao phẩm hoặc phòng học. Quá trình xác thực phải đảm bảo an toàn, hạn chế rủi ro lộ mật khẩu và có khả năng xử lý các tình huống như đăng nhập sai nhiều lần hoặc quên mật khẩu.
+
+\subsubsection{Công nghệ sử dụng}
+
+Hệ thống sử dụng cơ chế xác thực dựa trên tài khoản và mật khẩu, trong đó mật khẩu được mã hóa bằng các thuật toán băm một chiều (ví dụ: bcrypt hoặc Argon2). Sau khi xác thực thành công, hệ thống cấp cho người dùng một mã phiên làm việc (session) hoặc mã thông báo (token) để duy trì trạng thái đăng nhập. Cơ chế này giúp đảm bảo thông tin đăng nhập không bị lộ trong quá trình truyền tải và lưu trữ.
+
+\subsubsection{Các lựa chọn thay thế}
+
+Một số hướng tiếp cận khác có thể sử dụng bao gồm xác thực bằng OAuth2, Single Sign-On (SSO) hoặc xác thực đa yếu tố (MFA). Tuy nhiên, các phương pháp này thường yêu cầu tích hợp với hệ thống bên ngoài hoặc hạ tầng phức tạp hơn.
+
+\subsubsection{Lý do lựa chọn}
+
+Với phạm vi đồ án và đối tượng sử dụng chủ yếu trong nội bộ tổ chức, cơ chế xác thực bằng tài khoản và mật khẩu mã hóa là phù hợp, dễ triển khai và đáp ứng đầy đủ yêu cầu an toàn đã nêu trong \autoref{subsection:2.2.5}.
+
+\subsection{Phân quyền dựa trên vai trò (Role-Based Access Control)}
+
+\subsubsection{Vấn đề cần giải quyết}
+
+Hệ thống cần phân biệt rõ quyền hạn của các nhóm người dùng khác nhau như Admin và User. Mỗi nhóm chỉ được phép thực hiện các chức năng phù hợp, ví dụ Admin có quyền tạo tài khoản, phân quyền và duyệt cấp phát tài sản, trong khi User chỉ có quyền xem thông tin và gửi yêu cầu.
+
+\subsubsection{Công nghệ sử dụng}
+
+Hệ thống áp dụng mô hình phân quyền dựa trên vai trò (Role-Based Access Control – RBAC). Trong mô hình này, mỗi người dùng được gán vào một hoặc nhiều nhóm quyền (role). Mỗi nhóm quyền sẽ được định nghĩa tập các quyền cụ thể tương ứng với các chức năng của hệ thống. Khi người dùng thực hiện một thao tác, hệ thống sẽ kiểm tra quyền thông qua vai trò đã được gán.
+
+\subsubsection{Các lựa chọn thay thế}
+
+Ngoài RBAC, có thể sử dụng mô hình phân quyền dựa trên thuộc tính (Attribute-Based Access Control – ABAC) hoặc phân quyền trực tiếp theo người dùng. Tuy nhiên, các mô hình này phức tạp hơn trong việc triển khai và quản lý.
+
+\subsubsection{Lý do lựa chọn}
+
+RBAC là mô hình phổ biến, dễ hiểu và phù hợp với hệ thống quản lý tài sản có số lượng người dùng và chức năng tương đối lớn. Việc sử dụng RBAC giúp hệ thống linh hoạt trong việc thay đổi quyền mà không cần chỉnh sửa trực tiếp từng tài khoản, đồng thời phù hợp với các use case phân quyền đã được phân tích ở \autoref{subsection:2.2.5}.
+
+\subsection{Quản lý trạng thái tài khoản}
+
+\subsubsection{Vấn đề cần giải quyết}
+
+Hệ thống cần quản lý trạng thái của tài khoản người dùng như đang hoạt động, bị vô hiệu hóa hoặc bị khóa tạm thời do đăng nhập sai nhiều lần. Điều này giúp tăng cường bảo mật và hỗ trợ quản trị người dùng hiệu quả.
+
+\subsubsection{Công nghệ sử dụng}
+
+Mỗi tài khoản trong hệ thống được gắn một trạng thái cụ thể. Trước khi cho phép đăng nhập hoặc thực hiện thao tác, hệ thống kiểm tra trạng thái tài khoản. Ngoài ra, hệ thống theo dõi số lần đăng nhập thất bại để tự động khóa tài khoản trong một khoảng thời gian nhất định khi vượt quá ngưỡng cho phép.
+
+\subsubsection{Các lựa chọn thay thế}
+
+Một số hệ thống có thể sử dụng cơ chế xác thực bên ngoài để quản lý trạng thái tài khoản. Tuy nhiên, cách tiếp cận này làm giảm khả năng kiểm soát trực tiếp của hệ thống.
+
+\subsubsection{Lý do lựa chọn}
+
+Việc quản lý trạng thái tài khoản trực tiếp trong hệ thống giúp đơn giản hóa kiến trúc và phù hợp với yêu cầu nghiệp vụ đã được mô tả trong các use case quản lý tài khoản ở \autoref{subsection:2.2.5}.
+
+\subsection{Ghi log và kiểm toán}
+
+\subsubsection{Vấn đề cần giải quyết}
+
+Các thao tác liên quan đến tài khoản và phân quyền cần được ghi nhận nhằm phục vụ công tác kiểm tra, truy vết và đảm bảo tính minh bạch trong quản lý.
+
+\subsubsection{Công nghệ sử dụng}
+
+Hệ thống sử dụng cơ chế ghi log cho các hành động quan trọng như tạo tài khoản, phân quyền, khóa hoặc xóa tài khoản. Các bản ghi này được lưu trữ trong cơ sở dữ liệu và có thể được truy xuất khi cần thiết.
+
+\subsubsection{Lý do lựa chọn}
+
+Cơ chế ghi log giúp tăng độ tin cậy và đáp ứng yêu cầu kiểm toán đã được nêu trong \autoref{subsection:2.2.5}, đồng thời phù hợp với các hệ thống quản lý tài sản trong thực tế.
+
+\section{Công nghệ sử dụng trong quản lý danh mục, tài sản và tiêu hao phẩm}
+\label{section:3.y}
+
+Trong hệ thống quản lý tài sản đã phân tích ở \autoref{subsection:2.3.1}, các chức năng quản lý danh mục, quản lý tài sản và quản lý tiêu hao phẩm đóng vai trò trung tâm trong việc tổ chức, theo dõi và sử dụng tài nguyên của tổ chức. Các chức năng này yêu cầu hệ thống phải quản lý dữ liệu có cấu trúc rõ ràng, đảm bảo tính nhất quán, hỗ trợ truy vấn hiệu quả và đáp ứng tốt các nghiệp vụ như cấp phát, hoàn trả, kiểm kê và thống kê. Do đó, việc lựa chọn công nghệ phù hợp cho các chức năng này là cần thiết để đảm bảo hệ thống hoạt động ổn định và dễ mở rộng.
+
+\subsection{Quản lý danh mục (Category Management)}
+
+\subsubsection{Vấn đề cần giải quyết}
+
+Danh mục được sử dụng để phân loại tài sản và tiêu hao phẩm theo nhóm như thiết bị CNTT, thiết bị giảng dạy, vật tư tiêu hao, v.v. Việc quản lý danh mục giúp hệ thống tổ chức dữ liệu khoa học, hỗ trợ tìm kiếm, thống kê và quản lý tài sản hiệu quả. Hệ thống cần cho phép tạo mới, chỉnh sửa và xóa danh mục, đồng thời đảm bảo tính nhất quán khi danh mục được sử dụng bởi các tài sản liên quan.
+
+\subsubsection{Công nghệ sử dụng}
+
+Hệ thống sử dụng mô hình dữ liệu quan hệ để quản lý danh mục, trong đó mỗi danh mục được lưu trữ dưới dạng một bản ghi độc lập và được liên kết với tài sản hoặc tiêu hao phẩm thông qua khóa ngoại. Cách tiếp cận này cho phép tái sử dụng danh mục, tránh trùng lặp dữ liệu và hỗ trợ các thao tác lọc, tìm kiếm theo danh mục một cách hiệu quả.
+
+\subsubsection{Các lựa chọn thay thế}
+
+Một số hệ thống có thể sử dụng mô hình danh mục phân cấp phức tạp (hierarchical categories) hoặc gán nhãn tự do (tagging). Tuy nhiên, các mô hình này thường làm tăng độ phức tạp trong quản lý và truy vấn.
+
+\subsubsection{Lý do lựa chọn}
+
+Việc sử dụng danh mục theo mô hình quan hệ đơn giản phù hợp với yêu cầu nghiệp vụ đã phân tích ở \autoref{subsection:2.3.1}, đồng thời đáp ứng tốt nhu cầu quản lý tài sản trong môi trường tổ chức như trường học hoặc doanh nghiệp, tương tự cách tiếp cận của .
+
+\subsection{Quản lý tài sản (Asset Management)}
+
+\subsubsection{Vấn đề cần giải quyết}
+
+Tài sản là đối tượng quản lý chính của hệ thống, bao gồm các thiết bị và thành phần có giá trị sử dụng lâu dài. Hệ thống cần lưu trữ đầy đủ thông tin tài sản, theo dõi trạng thái (sẵn sàng, đã cấp phát, bảo trì), lịch sử sử dụng và hỗ trợ các nghiệp vụ như cấp phát, hoàn trả và kiểm kê.
+
+\subsubsection{Công nghệ sử dụng}
+
+Hệ thống áp dụng mô hình quản lý tài sản dựa trên trạng thái (state-based management). Mỗi tài sản được gắn một trạng thái cụ thể và trạng thái này được cập nhật tương ứng với các nghiệp vụ phát sinh. Các thông tin liên quan đến tài sản như danh mục, phòng học, người sử dụng và lịch sử cấp phát được lưu trữ trong cơ sở dữ liệu quan hệ, cho phép truy xuất và kiểm soát dữ liệu một cách nhất quán.
+
+\subsubsection{Các lựa chọn thay thế}
+
+Một số hệ thống có thể sử dụng mô hình quản lý tài sản phân tán hoặc lưu trữ dữ liệu dưới dạng phi cấu trúc. Tuy nhiên, các cách tiếp cận này thường khó kiểm soát trạng thái và không phù hợp với các nghiệp vụ cấp phát – hoàn trả phức tạp.
+
+\subsubsection{Lý do lựa chọn}
+
+Mô hình quản lý tài sản dựa trên trạng thái giúp hệ thống dễ dàng kiểm soát vòng đời tài sản, phù hợp với các use case quản lý tài sản, cấp phát và kiểm toán đã được trình bày ở \autoref{subsection:2.3.1}. Đây cũng là cách tiếp cận phổ biến trong các hệ thống quản lý tài sản thực tế như .
+
+\subsection{Quản lý tiêu hao phẩm (Consumable Management)}
+
+\subsubsection{Vấn đề cần giải quyết}
+
+Khác với tài sản cố định, tiêu hao phẩm là các vật tư có số lượng thay đổi theo quá trình sử dụng. Hệ thống cần theo dõi số lượng tồn kho, cho phép cấp phát theo số lượng cụ thể và cập nhật lại tồn kho khi có hoàn trả phần dư.
+
+\subsubsection{Công nghệ sử dụng}
+
+Hệ thống sử dụng mô hình quản lý tiêu hao phẩm dựa trên số lượng (quantity-based management). Mỗi tiêu hao phẩm được lưu trữ kèm theo thông tin về đơn vị tính và số lượng tồn kho. Khi phát sinh nghiệp vụ cấp phát hoặc hoàn trả, hệ thống tự động cập nhật số lượng tồn kho tương ứng và ghi nhận lịch sử sử dụng.
+
+\subsubsection{Các lựa chọn thay thế}
+
+Một số hệ thống sử dụng mô hình quản lý kho phức tạp với nhiều cấp tồn kho hoặc tích hợp hệ thống ERP. Tuy nhiên, các mô hình này vượt quá phạm vi và yêu cầu của đồ án.
+
+\subsubsection{Lý do lựa chọn}
+
+Mô hình quản lý tiêu hao phẩm theo số lượng đơn giản, dễ triển khai và phù hợp với yêu cầu nghiệp vụ đã phân tích ở \autoref{subsection:2.3.1}, đồng thời phản ánh đúng cách quản lý tiêu hao phẩm trong các hệ thống tương tự .
+
+\subsection{Ghi log và kiểm kê}
+
+Các nghiệp vụ liên quan đến danh mục, tài sản và tiêu hao phẩm đều được ghi nhận thông qua cơ chế log và kiểm kê. Mỗi thao tác tạo, chỉnh sửa, cấp phát hoặc hoàn trả đều được lưu lại nhằm phục vụ việc truy vết, thống kê và kiểm toán. Cách tiếp cận này giúp tăng tính minh bạch và độ tin cậy của hệ thống trong quá trình vận hành.
+
+
+\end{document}
