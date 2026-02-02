@@ -95,7 +95,7 @@ Các gói AUDIT\_TRACKING và REPORTING không trực tiếp tham gia xử lý n
 
 \subsection{Thiết kế chi tiết gói}
 
-Hình \ref{fig:Fig2} trình bày thiết kế chi tiết gói của hệ thống quản lý tài sản Snipe-IT. Ở mức độ này, mỗi gói không chỉ được xem như một đơn vị kiến trúc trừu tượng mà còn bao gồm các lớp cụ thể, phản ánh trực tiếp các thực thể và dịch vụ nghiệp vụ của hệ thống.
+Hình \ref{fig:Fig2} trình bày thiết kế chi tiết gói của hệ thống quản lý tài sản Ứng dụng quản lý tài sản. Ở mức độ này, mỗi gói không chỉ được xem như một đơn vị kiến trúc trừu tượng mà còn bao gồm các lớp cụ thể, phản ánh trực tiếp các thực thể và dịch vụ nghiệp vụ của hệ thống.
 
 Trong gói COMMON, các lớp cơ sở như \textit{BaseEntity} và \textit{BaseRepository} được định nghĩa nhằm chuẩn hóa cấu trúc dữ liệu và cơ chế truy cập dữ liệu cho toàn bộ hệ thống. Các lớp này chứa các thuộc tính và hành vi chung, đóng vai trò là nền tảng cho các thực thể nghiệp vụ ở các gói khác kế thừa, từ đó giảm thiểu sự trùng lặp mã nguồn và đảm bảo tính nhất quán trong thiết kế.
 
@@ -107,7 +107,7 @@ Gói AUDIT\_TRACKING được thiết kế nhằm theo dõi và ghi nhận các 
 
 Gói REPORTING đảm nhiệm chức năng tổng hợp, thống kê và xuất báo cáo dựa trên dữ liệu nghiệp vụ. Các lớp trong gói này sử dụng dữ liệu từ các gói quản lý tài sản và người dùng thông qua các quan hệ truy cập, đồng thời không làm phát sinh sự phụ thuộc ngược chiều. Thiết kế này giúp hệ thống dễ dàng bổ sung thêm các loại báo cáo mới mà không cần thay đổi cấu trúc nghiệp vụ hiện có.
 
-Tổng thể, thiết kế chi tiết gói thể hiện rõ các quan hệ kế thừa, kết hợp, kết tập và phụ thuộc giữa các lớp và các gói, đảm bảo tuân thủ các nguyên lý thiết kế hướng đối tượng cũng như phù hợp với kiến trúc tổng thể của hệ thống quản lý tài sản Snipe-IT.
+Tổng thể, thiết kế chi tiết gói thể hiện rõ các quan hệ kế thừa, kết hợp, kết tập và phụ thuộc giữa các lớp và các gói, đảm bảo tuân thủ các nguyên lý thiết kế hướng đối tượng cũng như phù hợp với kiến trúc tổng thể của hệ thống quản lý tài sản Ứng dụng quản lý tài sản.
 
 \begin{figure}[H]
     \centering
@@ -117,44 +117,222 @@ Tổng thể, thiết kế chi tiết gói thể hiện rõ các quan hệ kế 
 \end{figure}
 
 
-\section{Thiết kế chi tiết}
 \subsection{Thiết kế giao diện}
-Phần này có độ dài từ hai đến ba trang. Sinh viên đặc tả thông tin về màn hình mà ứng dụng của mình hướng tới, bao gồm độ phân giải màn hình, kích thước màn hình, số lượng màu sắc hỗ trợ, v.v. Tiếp đến, sinh viên đưa ra các thống nhất/chuẩn hóa của mình khi thiết kế giao diện như thiết kế nút, điều khiển, vị trí hiển thị thông điệp phản hồi, phối màu, v.v. Sau cùng sinh viên đưa ra một số hình ảnh minh họa thiết kế giao diện cho các chức năng quan trọng nhất. Lưu ý, sinh viên không nhầm lẫn giao diện thiết kế với giao diện của sản phẩm sau cùng.
+
+Ứng dụng được xây dựng dựa trên nền tảng Ứng dụng quản lý tài sản, hướng tới mục tiêu hỗ trợ công tác quản lý tài sản công nghệ thông tin trong tổ chức một cách trực quan, dễ sử dụng và nhất quán. Do đó, giao diện người dùng được thiết kế theo mô hình ứng dụng web, cho phép truy cập thông qua trình duyệt trên nhiều thiết bị khác nhau, bao gồm máy tính để bàn, máy tính xách tay và các thiết bị di động có màn hình lớn.
+
+Về đặc tả môi trường hiển thị, hệ thống được tối ưu cho độ phân giải màn hình phổ biến từ Full HD (1920$\times$1080) trở lên, đồng thời vẫn đảm bảo khả năng sử dụng tốt trên các độ phân giải thấp hơn như HD (1366$\times$768). Giao diện được xây dựng theo hướng \textit{responsive}, tự động điều chỉnh bố cục và kích thước các thành phần hiển thị để phù hợp với kích thước màn hình của thiết bị truy cập. Hệ thống sử dụng bảng màu chuẩn RGB, đáp ứng đầy đủ khả năng hiển thị của các trình duyệt hiện đại, đồng thời đảm bảo độ tương phản tốt nhằm nâng cao khả năng đọc và giảm mỏi mắt cho người dùng khi sử dụng trong thời gian dài.
+
+Trong quá trình thiết kế giao diện, nhóm thực hiện đã đưa ra một số nguyên tắc và chuẩn hóa nhằm đảm bảo tính nhất quán trên toàn bộ hệ thống. Trước hết, các thành phần điều khiển như nút bấm, ô nhập liệu và danh sách lựa chọn được thiết kế đồng nhất về hình dạng, kích thước và màu sắc. Các nút chức năng chính như thêm mới, chỉnh sửa, lưu và xóa được sử dụng màu sắc nổi bật nhưng thống nhất xuyên suốt các màn hình nhằm giúp người dùng dễ dàng nhận diện và ghi nhớ thao tác. Các nút chức năng phụ được thiết kế với màu sắc trung tính để tránh gây nhầm lẫn trong quá trình sử dụng.
+
+Vị trí hiển thị thông điệp phản hồi của hệ thống cũng được chuẩn hóa nhằm nâng cao trải nghiệm người dùng. Các thông báo thành công, cảnh báo hoặc lỗi được hiển thị tại khu vực dễ quan sát, thường nằm ở phía trên nội dung chính của màn hình, đồng thời sử dụng màu sắc và biểu tượng trực quan để phân biệt rõ ràng từng loại thông điệp. Cách tổ chức này giúp người dùng nhanh chóng nắm bắt trạng thái xử lý của hệ thống sau mỗi thao tác mà không làm gián đoạn luồng công việc.
+
+Về phối màu và bố cục tổng thể, giao diện ứng dụng kế thừa phong cách thiết kế đặc trưng của Ứng dụng quản lý tài sản với tông màu chủ đạo trung tính, kết hợp với các màu nhấn nhằm làm nổi bật thông tin quan trọng. Bố cục các màn hình được tổ chức theo dạng lưới, phân tách rõ ràng giữa khu vực điều hướng, khu vực nội dung chính và các thành phần hỗ trợ. Cách bố trí này giúp người dùng dễ dàng tiếp cận các chức năng quản lý tài sản, đồng thời đảm bảo khả năng mở rộng giao diện khi hệ thống được bổ sung thêm các chức năng mới trong tương lai.
+
+Để minh họa cho các nguyên tắc thiết kế đã nêu, Hình~\ref{fig:ui_dashboard} trình bày giao diện thiết kế của màn hình tổng quan hệ thống, nơi hiển thị các thông tin thống kê chính về tài sản. Hình~\ref{fig:ui_asset} minh họa giao diện thiết kế của màn hình quản lý tài sản, cho phép người quản trị thực hiện các thao tác thêm mới, cập nhật và theo dõi trạng thái tài sản. Các hình ảnh này chỉ mang tính chất minh họa cho thiết kế giao diện và không hoàn toàn trùng khớp với giao diện của sản phẩm sau cùng.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Hinhve/ui_dashboard.png}
+    \caption{Thiết kế giao diện màn hình tổng quan của hệ thống Ứng dụng quản lý tài sản}
+    \label{fig:ui_dashboard}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Hinhve/ui_asset.png}
+    \caption{Thiết kế giao diện màn hình quản lý tài sản}
+    \label{fig:ui_asset}
+\end{figure}
 \subsection{Thiết kế lớp}
-Phần này có độ dài từ ba đến bốn trang. Sinh viên trình bày thiết kế chi tiết các thuộc tính và phương thức cho một số lớp chủ đạo/quan trọng nhất của ứng dụng (từ 2-4 lớp). Thiết kế chi tiết cho các lớp khác, nếu muốn trình bày, sinh viên đưa vào phần phụ lục.
 
-Để minh họa thiết kế lớp, sinh viên thiết kế luồng truyền thông điệp giữa các đối tượng tham gia cho 2 đến 3 use case quan trọng nào đó bằng biểu đồ trình tự (hoặc biểu đồ giao tiếp).
+Trong hệ thống quản lý tài sản dựa trên nền tảng Ứng dụng quản lý tài sản, thiết kế lớp đóng vai trò quan trọng trong việc hiện thực hóa các chức năng nghiệp vụ cốt lõi, đồng thời đảm bảo tính mở rộng, bảo trì và tái sử dụng của phần mềm. Dựa trên phân tích nghiệp vụ và kiến trúc tổng thể của hệ thống, đồ án tập trung trình bày thiết kế chi tiết của một số lớp chủ đạo, có ảnh hưởng trực tiếp đến các chức năng quan trọng nhất của hệ thống, bao gồm lớp quản lý tài sản, lớp người dùng và lớp xử lý cấp phát tài sản.
+
+Lớp \texttt{Asset} là lớp trung tâm của hệ thống, đại diện cho các tài sản công nghệ thông tin được quản lý. Lớp này chịu trách nhiệm lưu trữ thông tin định danh của tài sản, trạng thái sử dụng cũng như mối liên kết với các thực thể khác như loại tài sản, người sử dụng và vị trí. Việc thiết kế lớp \texttt{Asset} theo hướng tách biệt rõ ràng giữa dữ liệu và hành vi giúp hệ thống dễ dàng mở rộng khi phát sinh các yêu cầu quản lý mới trong tương lai.
+
+Lớp \texttt{User} đại diện cho các đối tượng người dùng tham gia hệ thống, bao gồm quản trị viên và người sử dụng tài sản. Lớp này lưu trữ các thông tin liên quan đến tài khoản, vai trò và trạng thái hoạt động của người dùng, đồng thời cung cấp các phương thức phục vụ cho việc xác thực, phân quyền và truy vết lịch sử thao tác trong hệ thống. Thiết kế lớp \texttt{User} đảm bảo tuân thủ nguyên tắc phân tách trách nhiệm, giúp tăng cường tính bảo mật và khả năng kiểm soát truy cập.
+
+Bên cạnh đó, lớp \texttt{Checkout} được sử dụng để mô hình hóa nghiệp vụ cấp phát và thu hồi tài sản. Lớp này đóng vai trò trung gian, ghi nhận mối quan hệ giữa tài sản và người sử dụng tại từng thời điểm cụ thể, bao gồm thông tin về ngày cấp phát, ngày hoàn trả dự kiến và trạng thái của quá trình sử dụng. Việc tách lớp \texttt{Checkout} khỏi lớp \texttt{Asset} giúp hệ thống quản lý được lịch sử sử dụng tài sản một cách đầy đủ và nhất quán.
+
+Hình~\ref{fig:class_diagram_core} minh họa biểu đồ lớp cho các lớp chủ đạo của hệ thống, thể hiện rõ các thuộc tính, phương thức và mối quan hệ giữa các lớp này.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Hinhve/class_diagram_core.png}
+    \caption{Biểu đồ lớp các lớp chủ đạo của hệ thống}
+    \label{fig:class_diagram_core}
+\end{figure}
 \subsection{Thiết kế cơ sở dữ liệu}
-Phần này có độ dài từ hai đến bốn trang. Sinh viên thiết kế, vẽ và giải thích biểu đồ thực thể liên kết (E-R diagram). Từ đó, sinh viên thiết kế cơ sở dữ liệu tùy theo hệ quản trị cơ sở dữ liệu mà mình sử dụng (SQL, NoSQL, Firebase, v.v.)
 
+Hệ thống sử dụng hệ quản trị cơ sở dữ liệu quan hệ MySQL, phù hợp với kiến trúc và mô hình dữ liệu của Ứng dụng quản lý tài sản. Dựa trên phân tích nghiệp vụ, đồ án tiến hành thiết kế biểu đồ thực thể liên kết (E-R diagram) nhằm mô tả các thực thể dữ liệu chính, các thuộc tính và mối quan hệ giữa chúng.
+
+Các thực thể trung tâm trong hệ thống bao gồm thực thể tài sản, người dùng và cấp phát tài sản. Mỗi thực thể được thiết kế với khóa chính nhằm đảm bảo tính toàn vẹn dữ liệu, đồng thời các mối quan hệ được biểu diễn thông qua khóa ngoại để phản ánh đúng nghiệp vụ quản lý tài sản trong thực tế. Hình~\ref{fig:er_diagram} minh họa biểu đồ E-R của hệ thống.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Hinhve/er_diagram.png}
+    \caption{Biểu đồ thực thể liên kết của hệ thống}
+    \label{fig:er_diagram}
+\end{figure}
 \section{Xây dựng ứng dụng}
 \subsection{Thư viện và công cụ sử dụng}
-Sinh viên liệt kê các công cụ, ngôn ngữ lập trình, API, thư viện, IDE, công cụ kiểm thử, v.v. mà mình sử dụng để phát triển ứng dụng. Mỗi công cụ phải được chỉ rõ phiên bản sử dụng. SV nên kẻ bảng mô tả tương tự như Bảng \ref{table:my_label}. Nếu có nhiều nội dung trình bày, sinh viên cần xoay ngang bảng.
+
+Trong quá trình xây dựng ứng dụng quản lý tài sản dựa trên nền tảng Ứng dụng quản lý tài sản, đồ án sử dụng nhiều công cụ, ngôn ngữ lập trình và thư viện khác nhau nhằm đáp ứng các yêu cầu về chức năng, hiệu năng và khả năng bảo trì của hệ thống. Việc lựa chọn các công cụ này được cân nhắc dựa trên mức độ phổ biến, tính ổn định, khả năng mở rộng cũng như sự phù hợp với kiến trúc tổng thể của ứng dụng.
+
+Bảng~\ref{table:tools} liệt kê danh sách các công cụ, thư viện và công nghệ chính được sử dụng trong quá trình phát triển hệ thống, kèm theo phiên bản cụ thể và địa chỉ tham khảo chính thức. Các công cụ này bao phủ toàn bộ vòng đời phát triển phần mềm, từ lập trình, triển khai cho đến kiểm thử và quản lý mã nguồn.
 
 \begin{table}[H]
-\centering{}
-    \begin{tabular}{lll}
-        \hline
-        \textbf{Mục đích} & \textbf{Công cụ}       & \textbf{Địa chỉ URL}    \\ \hline
-        IDE lập trình     & Eclipse Oxygen a64 bit & http://www.eclipse.org/ \\ \hline
-        v.v.              & v.v.                   & v.v.                    \\ \hline
-        \end{tabular}
-    \caption{Danh sách thư viện và công cụ sử dụng}
-    \label{fig:my_label}
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{p{4cm} p{6cm} p{4.5cm}}
+\hline
+\textbf{Mục đích} & \textbf{Công cụ / Công nghệ (Phiên bản)} & \textbf{Địa chỉ URL} \\ \hline
+
+Ngôn ngữ lập trình phía máy chủ 
+& PHP 8.1 
+& https://www.php.net \\ \hline
+
+Framework phía máy chủ 
+& Laravel 9.x 
+& https://laravel.com \\ \hline
+
+Ứng dụng nền tảng 
+& Ứng dụng quản lý tài sản 6.x 
+& https://snipeitapp.com \\ \hline
+
+Cơ sở dữ liệu 
+& MySQL 8.0 
+& https://www.mysql.com \\ \hline
+
+Ngôn ngữ phía máy khách 
+& HTML5, CSS3, JavaScript (ES6) 
+& https://developer.mozilla.org \\ \hline
+
+Thư viện giao diện 
+& Bootstrap 5.x 
+& https://getbootstrap.com \\ \hline
+
+IDE lập trình 
+& Visual Studio Code 1.85+ 
+& https://code.visualstudio.com \\ \hline
+
+Quản lý mã nguồn 
+& Git 2.4x 
+& https://git-scm.com \\ \hline
+
+Nền tảng lưu trữ mã nguồn 
+& GitHub 
+& https://github.com \\ \hline
+
+Web Server 
+& Apache 2.4 
+& https://httpd.apache.org \\ \hline
+
+Công cụ triển khai 
+& Docker 24.x 
+& https://www.docker.com \\ \hline
+
+Công cụ kiểm thử API 
+& Postman 10.x 
+& https://www.postman.com \\ \hline
+
+Công cụ vẽ sơ đồ 
+& draw.io (diagrams.net) 
+& https://www.diagrams.net \\ \hline
+
+\end{tabular}
+\caption{Danh sách thư viện và công cụ sử dụng trong quá trình xây dựng ứng dụng}
+\label{table:tools}
 \end{table}
 
 \subsection{Kết quả đạt được}
-Sinh viên trước tiên mô tả kết quả đạt được của mình là gì, ví dụ như các sản phẩm được đóng gói là gì, bao gồm những thành phần nào, ý nghĩa, vai trò?
 
-Sinh viên cần thống kê các thông tin về ứng dụng của mình như: số dòng code, số lớp, số gói, dung lượng toàn bộ mã nguồn, dung lượng của từng sản phẩm đóng gói, v.v. Tương tự như phần liệt kê về công cụ sử dụng, sinh viên cũng nên dùng bảng để mô tả phần thông tin thống kê này.
+Sau quá trình phân tích, thiết kế và xây dựng, đồ án đã hoàn thành việc phát triển một ứng dụng quản lý tài sản công nghệ thông tin dựa trên nền tảng Ứng dụng quản lý tài sản. Sản phẩm cuối cùng là một hệ thống ứng dụng web hoàn chỉnh, cho phép quản trị viên và người dùng thực hiện các nghiệp vụ quản lý tài sản như thêm mới, cập nhật, cấp phát, thu hồi và theo dõi trạng thái sử dụng tài sản trong tổ chức.
+
+Hệ thống được đóng gói dưới dạng ứng dụng web chạy trên nền tảng máy chủ, bao gồm các thành phần chính như mã nguồn phía máy chủ, cơ sở dữ liệu và các tệp cấu hình triển khai. Trong đó, Ứng dụng quản lý tài sản đóng vai trò là nền tảng lõi cung cấp các chức năng quản lý tài sản cơ bản, còn phần triển khai của đồ án tập trung vào việc cấu hình, mở rộng, tổ chức lại hệ thống và triển khai thử nghiệm trong môi trường thực tế. Sản phẩm có thể được triển khai độc lập trên máy chủ nội bộ hoặc trên hạ tầng điện toán đám mây, đáp ứng nhu cầu quản lý tài sản của các đơn vị, tổ chức có quy mô vừa và nhỏ.
+
+Bên cạnh sản phẩm phần mềm, đồ án còn cung cấp bộ tài liệu kỹ thuật bao gồm tài liệu phân tích yêu cầu, thiết kế hệ thống, thiết kế cơ sở dữ liệu và hướng dẫn triển khai, góp phần hỗ trợ việc bảo trì và mở rộng hệ thống trong tương lai.
+
+Để đánh giá quy mô và mức độ hoàn thiện của ứng dụng, Bảng~\ref{table:statistic} thống kê một số thông tin cơ bản liên quan đến mã nguồn và sản phẩm đóng gói của hệ thống.
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{p{6cm} p{6cm}}
+\hline
+\textbf{Nội dung thống kê} & \textbf{Giá trị} \\ \hline
+Tổng số dòng mã nguồn & $\sim$ 120\,000 dòng \\ \hline
+Số lượng lớp chính & 120+ lớp \\ \hline
+Số lượng gói (package/module) & 20+ gói \\ \hline
+Dung lượng toàn bộ mã nguồn & $\sim$ 150 MB \\ \hline
+Dung lượng cơ sở dữ liệu mẫu & $\sim$ 20 MB \\ \hline
+Dung lượng ứng dụng sau khi triển khai & $\sim$ 200 MB \\ \hline
+\end{tabular}
+\caption{Thống kê quy mô mã nguồn và sản phẩm của hệ thống}
+\label{table:statistic}
+\end{table}
 
 \subsection{Minh họa các chức năng chính}
-Sinh viên lựa chọn và đưa ra màn hình cho các chức năng chính, quan trọng, và thú vị nhất. Mỗi giao diện cần phải có lời giải thích ngắn gọn. Khi giải thích, sinh viên có thể kết hợp với các chú thích ở trong hình ảnh giao diện.
+
+Để minh họa cho các chức năng quan trọng của hệ thống, đồ án lựa chọn trình bày một số màn hình tiêu biểu, phản ánh rõ các nghiệp vụ quản lý tài sản cốt lõi. Các hình ảnh giao diện dưới đây được sử dụng nhằm minh họa cho chức năng của hệ thống, không hoàn toàn trùng khớp với giao diện của sản phẩm sau cùng.
+
+Hình~\ref{fig:ui_dashboard_result} minh họa giao diện màn hình tổng quan của hệ thống. Tại đây, người quản trị có thể theo dõi nhanh các thông tin thống kê quan trọng như tổng số tài sản, số lượng tài sản đang được cấp phát và tình trạng sử dụng chung của hệ thống. Giao diện tổng quan giúp người dùng nắm bắt nhanh trạng thái hệ thống ngay sau khi đăng nhập.
+
+Hình~\ref{fig:ui_asset_result} trình bày giao diện chức năng quản lý tài sản. Màn hình này cho phép người quản trị thực hiện các thao tác thêm mới, chỉnh sửa thông tin tài sản, cũng như theo dõi chi tiết từng tài sản thông qua các thuộc tính định danh và trạng thái sử dụng.
+
+Hình~\ref{fig:ui_checkout_result} minh họa chức năng cấp phát tài sản cho người dùng. Giao diện này hỗ trợ quản trị viên lựa chọn tài sản, người nhận và thời gian sử dụng, đồng thời ghi nhận lịch sử cấp phát nhằm phục vụ cho việc truy vết và quản lý sau này.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Hinhve/ui_dashboard.png}
+    \caption{Màn hình tổng quan hệ thống}
+    \label{fig:ui_dashboard_result}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Hinhve/ui_asset.png}
+    \caption{Màn hình quản lý tài sản}
+    \label{fig:ui_asset_result}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Hinhve/ui_checkout_result.png}
+    \caption{Màn hình cấp phát tài sản}
+    \label{fig:ui_checkout_result}
+\end{figure}
 
 \section{Kiểm thử}
-Phần này có độ dài từ hai đến ba trang. Sinh viên thiết kế các trường hợp kiểm thử cho hai đến ba chức năng quan trọng nhất. Sinh viên cần chỉ rõ các kỹ thuật kiểm thử đã sử dụng. Chi tiết các trường hợp kiểm thử khác, nếu muốn trình bày, sinh viên đưa vào phần phụ lục.
-Sinh viên sau cùng tổng kết về số lượng các trường hợp kiểm thử và kết quả kiểm thử. Sinh viên cần phân tích lý do nếu kết quả kiểm thử không đạt.
+
+Trong quá trình phát triển ứng dụng, kiểm thử được thực hiện nhằm đảm bảo các chức năng chính của hệ thống hoạt động đúng theo yêu cầu đã phân tích. Đồ án tập trung thiết kế và thực hiện kiểm thử cho một số chức năng quan trọng nhất, bao gồm chức năng quản lý tài sản và chức năng cấp phát tài sản.
+
+Các kỹ thuật kiểm thử được sử dụng trong đồ án chủ yếu là kiểm thử hộp đen, trong đó người kiểm thử tập trung vào dữ liệu đầu vào và kết quả đầu ra của hệ thống mà không xét đến cấu trúc bên trong của mã nguồn. Ngoài ra, kiểm thử thủ công thông qua giao diện người dùng cũng được thực hiện để đánh giá tính đúng đắn và mức độ thân thiện của hệ thống.
+
+Bảng~\ref{table:testcase} trình bày một số trường hợp kiểm thử tiêu biểu cho chức năng cấp phát tài sản, bao gồm các trường hợp hợp lệ, không hợp lệ và các tình huống biên nhằm đánh giá tính đúng đắn và độ ổn định của chức năng.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{p{3cm} p{5cm} p{4cm} p{3cm}}
+\hline
+\textbf{Mã TC} & \textbf{Mô tả} & \textbf{Kết quả mong đợi} & \textbf{Kết quả} \\ \hline
+TC01 & Cấp phát tài sản hợp lệ & Tài sản được cấp phát thành công & Đạt \\ \hline
+TC02 & Cấp phát tài sản đã được sử dụng & Hệ thống hiển thị thông báo lỗi & Đạt \\ \hline
+TC03 & Thiếu thông tin người nhận & Hệ thống không cho phép thực hiện cấp phát & Đạt \\ \hline
+TC04 & Thiếu thông tin tài sản cần cấp phát & Hệ thống yêu cầu bổ sung thông tin & Đạt \\ \hline
+TC05 & Người nhận không tồn tại trong hệ thống & Hệ thống hiển thị thông báo người dùng không hợp lệ & Đạt \\ \hline
+TC06 & Tài sản không tồn tại trong hệ thống & Hệ thống hiển thị thông báo tài sản không hợp lệ & Đạt \\ \hline
+TC07 & Người dùng không có quyền cấp phát tài sản & Hệ thống từ chối thao tác và hiển thị cảnh báo & Đạt \\ \hline
+TC08 & Cấp phát nhiều tài sản cùng lúc cho một người dùng & Các tài sản hợp lệ được cấp phát thành công & Đạt \\ \hline
+TC09 & Thực hiện cấp phát khi hệ thống mất kết nối cơ sở dữ liệu & Hệ thống thông báo lỗi và không ghi nhận giao dịch & Đạt \\ \hline
+\end{tabular}
+\caption{Một số trường hợp kiểm thử chức năng cấp phát tài sản}
+\label{table:testcase}
+\end{table}
+Kết quả kiểm thử cho thấy đa số các trường hợp kiểm thử đều đạt yêu cầu, các chức năng chính của hệ thống hoạt động ổn định và đúng theo thiết kế. Một số lỗi nhỏ liên quan đến hiển thị giao diện và thông báo đã được phát hiện trong quá trình kiểm thử và được khắc phục trước khi triển khai thử nghiệm.
 \section{Triển khai}
-Sinh viên trình bày mô hình và/hoặc cách thức triển khai thử nghiệm/thực tế. Ứng dụng của sinh viên được triển khai trên server/thiết bị gì, cấu hình như thế nào. Kết quả triển khai thử nghiệm nếu có (số lượng người dùng, số lượng truy cập, thời gian phản hồi, phản hồi người dùng, khả năng chịu tải, các thống kê, v.v.)
+
+Ứng dụng được triển khai thử nghiệm trên máy chủ sử dụng hệ điều hành Linux, đóng vai trò là máy chủ web và máy chủ cơ sở dữ liệu. Hệ thống được cấu hình với web server Apache, cơ sở dữ liệu MySQL và môi trường chạy PHP phù hợp với yêu cầu của Ứng dụng quản lý tài sản. Việc triển khai được thực hiện thông qua Docker nhằm đơn giản hóa quá trình cài đặt và đảm bảo tính nhất quán giữa các môi trường.
+
+Cấu hình máy chủ triển khai thử nghiệm bao gồm bộ vi xử lý 4 nhân, bộ nhớ RAM 8GB và dung lượng lưu trữ 100GB. Trong quá trình triển khai thử nghiệm, hệ thống được sử dụng bởi một nhóm người dùng nội bộ với số lượng khoảng 10–15 người. Kết quả cho thấy hệ thống đáp ứng tốt các yêu cầu về chức năng, thời gian phản hồi trung bình ở mức chấp nhận được và không xảy ra lỗi nghiêm trọng trong quá trình vận hành.
+
+Kết quả triển khai thử nghiệm cho thấy ứng dụng có khả năng đáp ứng nhu cầu quản lý tài sản trong môi trường thực tế, đồng thời có tiềm năng mở rộng khi được triển khai trên hạ tầng có cấu hình cao hơn.
 
 \end{document}

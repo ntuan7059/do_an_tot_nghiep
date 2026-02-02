@@ -1,16 +1,14 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Đặc tả use case Quản lý tài khoản}}{16}{table.caption.16}%
-\contentsline {table}{\numberline {2.2}{\ignorespaces Đặc tả use case Quản lý tài sản}}{18}{table.caption.18}%
-\contentsline {table}{\numberline {2.3}{\ignorespaces Đặc tả use case Quản lý phòng học}}{19}{table.caption.19}%
-\contentsline {table}{\numberline {2.4}{\ignorespaces Đặc tả use case Quản lý tiêu hao phẩm}}{20}{table.caption.20}%
+\contentsline {table}{\numberline {2.1}{\ignorespaces Đặc tả use case Quản lý tài khoản}}{15}{table.caption.16}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Đặc tả use case Quản lý tài sản}}{17}{table.caption.18}%
+\contentsline {table}{\numberline {2.3}{\ignorespaces Đặc tả use case Quản lý phòng học}}{18}{table.caption.19}%
+\contentsline {table}{\numberline {2.4}{\ignorespaces Đặc tả use case Quản lý tiêu hao phẩm}}{19}{table.caption.20}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Danh sách thư viện và công cụ sử dụng}}{33}{table.caption.23}%
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {table}{\numberline {A.1}{\ignorespaces Table to test captions and labels.}}{41}{table.caption.27}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Danh sách thư viện và công cụ sử dụng trong quá trình xây dựng ứng dụng}}{36}{table.caption.27}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Thống kê quy mô mã nguồn và sản phẩm của hệ thống}}{37}{table.caption.28}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Một số trường hợp kiểm thử chức năng cấp phát tài sản}}{40}{table.caption.32}%
 \addvspace {10\p@ }
 \contentsfinish 
 \contentsfinish 

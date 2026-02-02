@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.12.19)  5 JAN 2026 15:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.12.19)  14 JAN 2026 17:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1215,7 +1215,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [2]
-<Hinhve/bieudophuthuocgoi.png, id=76, 697.8572pt x 541.27219pt>
+<Hinhve/bieudophuthuocgoi.png, id=72, 697.8572pt x 541.27219pt>
 File: Hinhve/bieudophuthuocgoi.png Graphic file (type png)
 <use Hinhve/bieudophuthuocgoi.png>
 Package pdftex.def Info: Hinhve/bieudophuthuocgoi.png  used on input line 91.
@@ -1224,7 +1224,7 @@ Package pdftex.def Info: Hinhve/bieudophuthuocgoi.png  used on input line 91.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [3 <./Hinhve/bieudophuthuocgoi.png>]
-<Hinhve/bieudochitietgoi.png, id=85, 1014.79124pt x 526.96875pt>
+<Hinhve/bieudochitietgoi.png, id=81, 1014.79124pt x 526.96875pt>
 File: Hinhve/bieudochitietgoi.png Graphic file (type png)
 <use Hinhve/bieudochitietgoi.png>
 Package pdftex.def Info: Hinhve/bieudochitietgoi.png  used on input line 114.
@@ -1233,58 +1233,199 @@ Package pdftex.def Info: Hinhve/bieudochitietgoi.png  used on input line 114.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [4]
-
-LaTeX Warning: Reference `table:my_label' on page 5 undefined on input line 132.
-
-[5 <./Hinhve/bieudochitietgoi.png>]
-LaTeX Font Info:    Calculating math sizes for size <13> on input line 136.
+LaTeX Font Info:    Calculating math sizes for size <13> on input line 124.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 136.
+(Font)              size <6> substituted on input line 124.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <13> not available
-(Font)              size <12> substituted on input line 136.
+(Font)              size <12> substituted on input line 124.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <6.5> not available
-(Font)              size <6> substituted on input line 136.
+(Font)              size <6> substituted on input line 124.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <13> not available
-(Font)              size <12> substituted on input line 136.
+(Font)              size <12> substituted on input line 124.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 136.
+(Font)              size <6> substituted on input line 124.
 
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 136.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 124.
 (D:\latex\tex/latex/base\ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <13> not available
-(Font)              size <12> substituted on input line 136.
+(Font)              size <12> substituted on input line 124.
 
 
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 136.
+(Font)              size <6> substituted on input line 124.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 136.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 124.
 (D:\latex\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 136.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 124.
  (D:\latex\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [5 <./Hinhve/bieudochitietgoi.png>]
+<Hinhve/ui_dashboard.png, id=95, 952.55875pt x 434.12187pt>
+File: Hinhve/ui_dashboard.png Graphic file (type png)
+<use Hinhve/ui_dashboard.png>
+Package pdftex.def Info: Hinhve/ui_dashboard.png  used on input line 136.
+(pdftex.def)             Requested size: 384.1096pt x 175.05661pt.
+<Hinhve/ui_asset.png, id=96, 940.01187pt x 446.66875pt>
+File: Hinhve/ui_asset.png Graphic file (type png)
+<use Hinhve/ui_asset.png>
+Package pdftex.def Info: Hinhve/ui_asset.png  used on input line 143.
+(pdftex.def)             Requested size: 384.1096pt x 182.51514pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6 <./Hinhve/ui_dashboard.png>]
+LaTeX Font Info:    Trying to load font information for T5+pcr on input line 151.
+ (D:\latex\tex/latex/vntex\t5pcr.fd
+File: t5ucr.fd 2005/08/24 Fontinst v1.929 font definitions for T5/pcr.
 )
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7 <./Hinhve/ui_asset.png>]
+<Hinhve/class_diagram_core.png, id=112, 583.17876pt x 483.8075pt>
+File: Hinhve/class_diagram_core.png Graphic file (type png)
+<use Hinhve/class_diagram_core.png>
+Package pdftex.def Info: Hinhve/class_diagram_core.png  used on input line 160.
+(pdftex.def)             Requested size: 405.45047pt x 336.37442pt.
+<Hinhve/er_diagram.png, id=114, 532.99126pt x 453.695pt>
+File: Hinhve/er_diagram.png Graphic file (type png)
+<use Hinhve/er_diagram.png>
+Package pdftex.def Info: Hinhve/er_diagram.png  used on input line 171.
+(pdftex.def)             Requested size: 405.45047pt x 345.13716pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8 <./Hinhve/class_diagram_core.png>]
+Underfull \hbox (badness 1616) in paragraph at lines 189--190
+[]|\T5/ptm/m/n/13 Ngæn ngú lªp tr¼nh
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 206--207
+[]|\T5/ptm/m/n/13 HTML5, CSS3, JavaScript
+ []
+
+
+Overfull \hbox (20.53954pt too wide) in paragraph at lines 207--207
+[]|\T5/ptm/m/n/13 https://developer.mozilla.org| 
+ []
+
+
+Overfull \hbox (24.16656pt too wide) in paragraph at lines 215--215
+[]|\T5/ptm/m/n/13 https://code.visualstudio.com| 
+ []
+
+
+Underfull \hbox (badness 4505) in paragraph at lines 233--234
+[]|\T5/ptm/m/n/13 Cæng cö kiºm thû
+ []
+
+
+Overfull \hbox (8.07257pt too wide) in paragraph at lines 235--235
+[]|\T5/ptm/m/n/13 https://www.postman.com| 
+ []
+
+
+Overfull \hbox (5.51157pt too wide) in paragraph at lines 239--239
+[]|\T5/ptm/m/n/13 https://www.diagrams.net| 
+ []
+
+
+Overfull \hbox (21.77359pt too wide) in paragraph at lines 185--242
+ [][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [9 <./Hinhve/er_diagram.png>] [10]
+File: Hinhve/ui_dashboard.png Graphic file (type png)
+<use Hinhve/ui_dashboard.png>
+Package pdftex.def Info: Hinhve/ui_dashboard.png  used on input line 283.
+(pdftex.def)             Requested size: 405.45047pt x 184.78087pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [11]
+File: Hinhve/ui_asset.png Graphic file (type png)
+<use Hinhve/ui_asset.png>
+Package pdftex.def Info: Hinhve/ui_asset.png  used on input line 290.
+(pdftex.def)             Requested size: 405.45047pt x 192.65677pt.
+<Hinhve/ui_checkout_result.png, id=145, 952.55875pt x 442.65375pt>
+File: Hinhve/ui_checkout_result.png Graphic file (type png)
+<use Hinhve/ui_checkout_result.png>
+Package pdftex.def Info: Hinhve/ui_checkout_result.png  used on input line 297.
+(pdftex.def)             Requested size: 405.45047pt x 188.4124pt.
+
+Underfull \vbox (badness 2005) has occurred while \output is active []
+
+ [12 <./Hinhve/ui_checkout_result.png>]
+Underfull \hbox (badness 6204) in paragraph at lines 317--317
+[]|\T5/ptm/m/n/13 H» thèng hiºn thà
+ []
+
+
+Underfull \hbox (badness 1968) in paragraph at lines 318--318
+\T5/ptm/m/n/13 ph²p thüc hi»n c§p
+ []
+
+
+Underfull \hbox (badness 6204) in paragraph at lines 320--320
+[]|\T5/ptm/m/n/13 H» thèng hiºn thà
+ []
+
+
+Underfull \hbox (badness 6204) in paragraph at lines 321--321
+[]|\T5/ptm/m/n/13 H» thèng hiºn thà
+ []
+
+
+Underfull \hbox (badness 8113) in paragraph at lines 321--321
+\T5/ptm/m/n/13 thæng b¡o t i s£n
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 322--322
+[]|\T5/ptm/m/n/13 Ng÷íi dòng khæng câ
+ []
+
+
+Underfull \hbox (badness 2057) in paragraph at lines 323--323
+[]|\T5/ptm/m/n/13 C¡c t i s£n hñp l»
+ []
+
+
+Overfull \hbox (47.99997pt too wide) in paragraph at lines 313--326
+ [][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [13]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [14]
 
 Package glossaries Warning: No \printnoidxglossary or \printnoidxglossaries
  found. (Remove \makenoidxglossaries if you don't want any glossaries.)
 This document will not have a glossary.
 
-[6] (c:\do_an\latex\Chuong\4_Ket_qua_thuc_nghiem.aux)
+[15] (c:\do_an\latex\Chuong\4_Ket_qua_thuc_nghiem.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-06>
@@ -1294,27 +1435,24 @@ L3 programming layer <2025-11-06>
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `4_Ket_qua_thuc_nghiem.out' has not changed.
-(rerunfilecheck)             Checksum: 402BDB191B6C9F90704B45063ACAED18;2601.
+(rerunfilecheck)             Checksum: 52FC7EDE9BE2503D2AF0983875ABA169;2452.
 Package logreq Info: Writing requests to '4_Ket_qua_thuc_nghiem.run.xml'.
 \openout1 = `4_Ket_qua_thuc_nghiem.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 32853 strings out of 467870
- 606532 string characters out of 5435673
- 1516719 words of memory out of 5000000
- 61255 multiletter control sequences out of 15000+600000
- 646332 words of font info for 69 fonts, out of 8000000 for 9000
+ 32946 strings out of 467870
+ 608394 string characters out of 5435673
+ 1519569 words of memory out of 5000000
+ 61327 multiletter control sequences out of 15000+600000
+ 647531 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,8n,124p,2584b,858s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<D:/latex/fonts/type1/vntex/urwvn/utmb8v.pfb><D:/latex/fonts/type1/urw/times/utmr8a.pfb><D:/latex/fonts/type1/vntex/urwvn/utmr8v.pfb><D:/latex/fonts/type1/vntex/urwvn/utmri8v.pfb>
-Output written on c:\do_an\latex\Chuong\4_Ket_qua_thuc_nghiem.pdf (6 pages, 144549 bytes).
+ 128i,12n,124p,2584b,858s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<D:/latex/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/latex/fonts/type1/vntex/urwvn/ucrr8v.pfb><D:/latex/fonts/type1/vntex/urwvn/utmb8v.pfb><D:/latex/fonts/type1/urw/times/utmr8a.pfb><D:/latex/fonts/type1/vntex/urwvn/utmr8v.pfb><D:/latex/fonts/type1/vntex/urwvn/utmri8v.pfb>
+Output written on c:\do_an\latex\Chuong\4_Ket_qua_thuc_nghiem.pdf (15 pages, 406166 bytes).
 PDF statistics:
- 128 PDF objects out of 1000 (max. 8388607)
- 27 named destinations out of 1000 (max. 500000)
- 123 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 207 PDF objects out of 1000 (max. 8388607)
+ 44 named destinations out of 1000 (max. 500000)
+ 140 words of extra memory for PDF output out of 10000 (max. 10000000)
 

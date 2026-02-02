@@ -4,7 +4,7 @@
 \section{Công nghệ sử dụng trong quản lý tài khoản và phân quyền}
 \label{section:3.x}
 
-Quản lý tài khoản và phân quyền là một trong những chức năng cốt lõi của hệ thống quản lý tài sản, đóng vai trò quan trọng trong việc đảm bảo an toàn dữ liệu, kiểm soát truy cập và phân tách trách nhiệm giữa các nhóm người dùng. Trong \autoref{subsection:2.2.5}, hệ thống đã được phân tích với các tác nhân chính như Admin và User cùng các nghiệp vụ liên quan đến tạo tài khoản, đăng nhập, phân quyền và kiểm soát trạng thái người dùng. Do đó, việc lựa chọn công nghệ phù hợp để hiện thực các yêu cầu này là cần thiết nhằm đảm bảo tính bảo mật, linh hoạt và khả năng mở rộng của hệ thống.
+Quản lý tài khoản và phân quyền là một trong những chức năng cốt lõi của hệ thống quản lý tài sản, đóng vai trò quan trọng trong việc đảm bảo an toàn dữ liệu, kiểm soát truy cập và phân tách trách nhiệm giữa các nhóm người dùng. Trong \autoref{subsection:2.2.5}, hệ thống đã được phân tích với các tác nhân chính như Admin và User cùng các nghiệp vụ liên quan đến tạo tài khoản, đăng nhập, phân quyền và kiểm soát trạng thái người dùng. Do đó, việc lựa chọn công nghệ phù hợp để hiện thực các yêu cầu này là cần thiết nhằm đảm bảo tính bảo mật, linh hoạt và khả năng mở rộng của hệ thống \cite{owasp2023top10}.
 
 \subsection{Xác thực người dùng (Authentication)}
 
@@ -105,7 +105,7 @@ Tài sản là đối tượng quản lý chính của hệ thống, bao gồm c
 
 \subsubsection{Công nghệ sử dụng}
 
-Hệ thống áp dụng mô hình quản lý tài sản dựa trên trạng thái (state-based management). Mỗi tài sản được gắn một trạng thái cụ thể và trạng thái này được cập nhật tương ứng với các nghiệp vụ phát sinh. Các thông tin liên quan đến tài sản như danh mục, phòng học, người sử dụng và lịch sử cấp phát được lưu trữ trong cơ sở dữ liệu quan hệ, cho phép truy xuất và kiểm soát dữ liệu một cách nhất quán.
+Hệ thống áp dụng mô hình quản lý tài sản dựa trên trạng thái (state-based management). Mỗi tài sản được gắn một trạng thái cụ thể và trạng thái này được cập nhật tương ứng với các nghiệp vụ phát sinh. Các thông tin liên quan đến tài sản như danh mục, phòng học, người sử dụng và lịch sử cấp phát được lưu trữ trong cơ sở dữ liệu quan hệ, cho phép truy xuất và kiểm soát dữ liệu một cách nhất quán  \cite{cloudcomputing2010nist, mysql2024docs}.
 
 \subsubsection{Các lựa chọn thay thế}
 

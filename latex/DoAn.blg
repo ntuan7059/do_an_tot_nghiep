@@ -22,55 +22,47 @@ Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Database file #1: DoAn-blx.bib
 Database file #2: Danh_sach_tai_lieu_tham_khao.bib
-Warning--I didn't find a database entry for "hovy1993automated"
-Warning--I didn't find a database entry for "peterson2007computer"
-Warning--I didn't find a database entry for "NguyenThucHai"
-Warning--I didn't find a database entry for "poesio2001discourse"
-Warning--I didn't find a database entry for "knott1996data"
-Warning--I didn't find a database entry for "BernersTim"
-Warning--I didn't find a database entry for "LectureA"
 Biblatex version: 3.21
 Reallocating 'wiz_functions' (item size: 4) to 9000 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
-You've used 1 entry,
+You've used 9 entries,
             6402 wiz_defined-function locations,
-            1213 strings with 9127 characters,
-and the built_in function-call counts, 1534 in all, are:
-= -- 73
-> -- 70
-< -- 1
-+ -- 49
-- -- 28
-* -- 32
-:= -- 370
+            1247 strings with 10007 characters,
+and the built_in function-call counts, 42255 in all, are:
+= -- 3007
+> -- 815
+< -- 227
++ -- 970
+- -- 256
+* -- 2581
+:= -- 4261
 add.period$ -- 0
-call.type$ -- 1
-change.case$ -- 0
+call.type$ -- 9
+change.case$ -- 138
 chr.to.int$ -- 42
-cite$ -- 0
-duplicate$ -- 11
-empty$ -- 104
-format.name$ -- 0
-if$ -- 325
+cite$ -- 16
+duplicate$ -- 4351
+empty$ -- 3980
+format.name$ -- 415
+if$ -- 8994
 int.to.chr$ -- 0
-int.to.str$ -- 0
+int.to.str$ -- 22
 missing$ -- 0
-newline$ -- 20
-num.names$ -- 0
-pop$ -- 47
+newline$ -- 198
+num.names$ -- 400
+pop$ -- 2751
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 171
 quote$ -- 0
-skip$ -- 78
+skip$ -- 1540
 stack$ -- 0
-substring$ -- 154
-swap$ -- 1
-text.length$ -- 20
+substring$ -- 5003
+swap$ -- 930
+text.length$ -- 179
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 22
+type$ -- 294
 warning$ -- 0
-while$ -- 64
+while$ -- 513
 width$ -- 0
-write$ -- 20
-(There were 7 warnings)
+write$ -- 190

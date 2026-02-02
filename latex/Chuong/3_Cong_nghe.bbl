@@ -16,5 +16,70 @@
   {}
 \endgroup
 
-\datalist[entry]{none/global//global/global/global}\enddatalist
+\datalist[entry]{none/global//global/global/global}
+  \entry{owasp2023top10}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=O}{%
+         family={{OWASP Foundation}},
+         familyi={O\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{O2}
+    \strng{fullhash}{O2}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{OWASP Top 10 Web Application Security Risks}
+    \verb{url}
+    \verb https://owasp.org/www-project-top-ten/
+    \endverb
+    \field{year}{2023}
+  \endentry
+
+  \entry{cloudcomputing2010nist}{article}{}{}
+    \name{author}{2}{}{%
+      {{hash=MP}{%
+         family={Mell},
+         familyi={M\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=GT}{%
+         family={Grance},
+         familyi={G\bibinitperiod},
+         given={Timothy},
+         giveni={T\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{2}{%
+      {National Institute of Standards}%
+      {Technology}%
+    }
+    \strng{namehash}{MPGT1}
+    \strng{fullhash}{MPGT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{800-145}
+    \field{title}{The NIST Definition of Cloud Computing}
+    \field{journaltitle}{NIST Special Publication}
+    \field{year}{2011}
+  \endentry
+
+  \entry{mysql2024docs}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=O}{%
+         family={{Oracle Corporation}},
+         familyi={O\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{O1}
+    \strng{fullhash}{O1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{MySQL 8.0 Reference Manual}
+    \verb{url}
+    \verb https://dev.mysql.com/doc/
+    \endverb
+    \field{year}{2024}
+  \endentry
+\enddatalist
 \endinput

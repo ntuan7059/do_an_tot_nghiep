@@ -1,14 +1,65 @@
 \documentclass[../DoAn.tex]{subfiles}
 \begin{document}
 
-Chương này có độ dài tối thiểu 5 trang, tối đa không giới hạn.\footnote{Trong trường hợp phần này dưới 5 trang thì sinh viên nên gộp vào phần kết luận, không tách ra một chương riêng rẽ nữa.} Sinh viên cần trình bày tất cả những nội dung đóng góp mà mình thấy tâm đắc nhất trong suốt quá trình làm ĐATN. Đó có thể là một loạt các vấn đề khó khăn mà sinh viên đã từng bước giải quyết được, là giải thuật cho một bài toán cụ thể, là giải pháp tổng quát cho một lớp bài toán, hoặc là mô hình/kiến trúc hữu hiệu nào đó được sinh viên thiết kế.
+\section{Các giải pháp và đóng góp nổi bật}
 
-Chương này \textbf{là cơ sở quan trọng} để các thầy cô đánh giá sinh viên. Vì vậy, sinh viên cần phát huy tính sáng tạo, khả năng phân tích, phản biện, lập luận, tổng quát hóa vấn đề và tập trung viết cho thật tốt.
-Mỗi giải pháp hoặc đóng góp của sinh viên cần được trình bày trong một mục độc lập bao gồm ba mục con: (i) dẫn dắt/giới thiệu về bài toán/vấn đề, (ii) giải pháp, và (iii) kết quả đạt được (nếu có).
+Chương này trình bày những đóng góp và giải pháp chính mà sinh viên đã thực hiện trong suốt quá trình triển khai đồ án tốt nghiệp. Đây là những nội dung mang tính tổng hợp, thể hiện khả năng phân tích bài toán thực tế, đề xuất giải pháp phù hợp và hiện thực hóa giải pháp đó trên một hệ thống phần mềm cụ thể. Các nội dung được trình bày trong chương này không lặp lại chi tiết đã mô tả ở các chương trước, mà tập trung làm rõ bản chất vấn đề, ý tưởng giải quyết và giá trị đạt được của từng đóng góp.
 
-Sinh viên lưu ý \textbf{không trình bày lặp lại nội dung}. Những nội dung đã trình bày chi tiết trong các chương trước không được trình bày lại trong chương này. Vì vậy, với nội dung hay, mang tính đóng góp/giải pháp, sinh viên chỉ nên tóm lược/mô tả sơ bộ trong các chương trước, đồng thời tạo tham chiếu chéo tới đề mục tương ứng trong Chương 5 này. Chi tiết thông tin về đóng góp/giải pháp được trình bày trong mục đó.
+Dựa trên quá trình nghiên cứu, triển khai và đánh giá hệ thống quản lý tài sản dựa trên nền tảng Ứng dụng quản lý tài sản, đồ án xác định một số đóng góp tiêu biểu liên quan đến kiến trúc hệ thống, mô hình dữ liệu và giải pháp triển khai ứng dụng trong môi trường thực tế. Mỗi đóng góp được trình bày trong một mục độc lập, bao gồm ba phần chính: giới thiệu vấn đề, giải pháp đề xuất và kết quả đạt được.
 
-Ví dụ, trong Chương 4, sinh viên có thiết kế được kiến trúc đáng lưu ý gì đó, là sự kết hợp của các kiến trúc MVC, MVP, SOA, v.v. Khi đó, sinh viên sẽ chỉ mô tả ngắn gọn kiến trúc đó ở Chương 4, rồi thêm các câu có dạng: ``Chi tiết về kiến trúc này sẽ được trình bày trong phần 5.1". 
+\section{Giải pháp tổ chức và tùy biến kiến trúc hệ thống dựa trên Ứng dụng quản lý tài sản}
+
+\subsection{Bài toán đặt ra}
+
+Trong thực tế, nhiều tổ chức có nhu cầu quản lý tài sản công nghệ thông tin nhưng gặp khó khăn khi lựa chọn giữa việc tự phát triển một hệ thống mới từ đầu hoặc sử dụng các phần mềm mã nguồn mở có sẵn. Việc phát triển mới giúp đáp ứng chính xác yêu cầu nghiệp vụ nhưng tốn nhiều thời gian và chi phí, trong khi các hệ thống có sẵn như Ứng dụng quản lý tài sản lại được thiết kế theo hướng tổng quát, chưa hoàn toàn phù hợp với đặc thù của từng đơn vị.
+
+Bài toán đặt ra là làm thế nào để tận dụng được nền tảng Ứng dụng quản lý tài sản nhằm rút ngắn thời gian phát triển, đồng thời vẫn đảm bảo khả năng tùy biến, mở rộng và triển khai hệ thống theo đúng yêu cầu quản lý tài sản của một tổ chức cụ thể. Nội dung này đã được đề cập ngắn gọn trong Chương 4 khi trình bày kiến trúc tổng thể của hệ thống.
+
+\subsection{Giải pháp đề xuất}
+
+Giải pháp của đồ án là tổ chức lại kiến trúc hệ thống dựa trên Ứng dụng quản lý tài sản theo hướng phân tách rõ ràng giữa nền tảng lõi và các thành phần cấu hình, mở rộng. Thay vì can thiệp sâu vào mã nguồn lõi, đồ án tập trung vào việc khai thác các cơ chế mở rộng sẵn có của Ứng dụng quản lý tài sản, kết hợp với việc cấu hình hệ thống, chuẩn hóa dữ liệu và điều chỉnh quy trình nghiệp vụ.
+
+Cách tiếp cận này cho phép hệ thống vừa kế thừa được tính ổn định, đầy đủ chức năng của Ứng dụng quản lý tài sản, vừa đảm bảo khả năng thích ứng với các yêu cầu quản lý tài sản cụ thể. Đồng thời, kiến trúc này giúp giảm thiểu rủi ro khi nâng cấp phiên bản Ứng dụng quản lý tài sản trong tương lai, do các thay đổi được giới hạn ở mức cấu hình và tổ chức hệ thống.
+
+\subsection{Kết quả đạt được}
+
+Kết quả triển khai cho thấy hệ thống hoạt động ổn định, đáp ứng đầy đủ các nghiệp vụ quản lý tài sản đã đề ra. Giải pháp kiến trúc này giúp rút ngắn đáng kể thời gian triển khai so với việc phát triển một hệ thống mới từ đầu, đồng thời vẫn đảm bảo khả năng mở rộng và bảo trì trong quá trình sử dụng lâu dài.
+
+\section{Giải pháp thiết kế mô hình dữ liệu phục vụ quản lý và truy vết tài sản}
+
+\subsection{Bài toán đặt ra}
+
+Quản lý tài sản không chỉ dừng lại ở việc lưu trữ thông tin tài sản hiện tại mà còn đòi hỏi khả năng truy vết lịch sử sử dụng, cấp phát và thu hồi tài sản theo thời gian. Nếu mô hình dữ liệu không được thiết kế hợp lý, hệ thống sẽ gặp khó khăn trong việc mở rộng và phân tích dữ liệu sau này. Vấn đề này đã được đề cập khái quát trong phần thiết kế cơ sở dữ liệu ở Chương 3.
+
+\subsection{Giải pháp đề xuất}
+
+Đồ án lựa chọn mô hình dữ liệu quan hệ, trong đó tách riêng thực thể cấp phát tài sản thành một bảng độc lập, đóng vai trò trung gian giữa tài sản và người dùng. Cách thiết kế này cho phép hệ thống lưu trữ đầy đủ lịch sử sử dụng tài sản, thay vì chỉ phản ánh trạng thái tại một thời điểm.
+
+Giải pháp này giúp đảm bảo tính toàn vẹn dữ liệu, đồng thời hỗ trợ các nghiệp vụ truy vấn, thống kê và báo cáo trong tương lai, chẳng hạn như thống kê tần suất sử dụng tài sản hoặc đánh giá hiệu quả khai thác tài sản trong tổ chức.
+
+\subsection{Kết quả đạt được}
+
+Mô hình dữ liệu được triển khai cho phép hệ thống quản lý hiệu quả thông tin tài sản và lịch sử sử dụng. Các truy vấn nghiệp vụ được thực hiện thuận lợi, dữ liệu nhất quán và dễ dàng mở rộng khi bổ sung thêm các yêu cầu quản lý mới.
+
+\section{Giải pháp triển khai và đóng gói hệ thống trong môi trường thực tế}
+
+\subsection{Bài toán đặt ra}
+
+Một trong những thách thức lớn khi đưa ứng dụng vào sử dụng là quá trình triển khai trên môi trường thực tế. Việc cài đặt thủ công dễ dẫn đến sai lệch cấu hình giữa các môi trường, gây khó khăn cho việc bảo trì và mở rộng hệ thống. Nội dung này đã được trình bày khái quát trong Chương 4 khi mô tả môi trường triển khai.
+
+\subsection{Giải pháp đề xuất}
+
+Đồ án áp dụng giải pháp triển khai hệ thống thông qua công nghệ Docker, cho phép đóng gói toàn bộ ứng dụng, các dịch vụ phụ trợ và cấu hình liên quan vào các container độc lập. Cách tiếp cận này giúp đảm bảo tính nhất quán giữa môi trường phát triển, kiểm thử và triển khai thực tế.
+
+Ngoài ra, việc sử dụng Docker còn giúp đơn giản hóa quá trình cài đặt, giảm phụ thuộc vào hệ điều hành và tạo tiền đề cho việc mở rộng hệ thống trong tương lai, chẳng hạn như triển khai trên các nền tảng điện toán đám mây.
+
+\subsection{Kết quả đạt được}
+
+Hệ thống được triển khai thử nghiệm thành công trong môi trường máy chủ Linux, hoạt động ổn định và dễ dàng tái triển khai khi cần thiết. Giải pháp này góp phần nâng cao tính thực tiễn của đồ án, cho thấy khả năng đưa sản phẩm vào sử dụng trong các tổ chức thực tế.
+
+\section{Đánh giá tổng hợp các đóng góp}
+
+Thông qua các giải pháp và đóng góp đã trình bày, đồ án không chỉ dừng lại ở việc triển khai một ứng dụng quản lý tài sản dựa trên Ứng dụng quản lý tài sản, mà còn đề xuất được các cách tiếp cận hợp lý trong việc tận dụng nền tảng mã nguồn mở, tổ chức kiến trúc hệ thống và triển khai ứng dụng trong môi trường thực tế. Những đóng góp này có thể được xem là cơ sở tham khảo cho các nghiên cứu hoặc dự án phát triển hệ thống quản lý tài sản tương tự trong tương lai.
 
 
 \end{document}

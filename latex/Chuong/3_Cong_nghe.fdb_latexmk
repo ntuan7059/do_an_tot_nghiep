@@ -1,22 +1,22 @@
 # Fdb version 4
-["bibtex Chuong/3_Cong_nghe"] 1766322747.21163 "Chuong/3_Cong_nghe.aux" "Chuong/3_Cong_nghe.bbl" "Chuong/3_Cong_nghe" 1766322766.3716 0
-  "./Danh_sach_tai_lieu_tham_khao.bib" 1766089964 2092 dff4f61ff8bbb7381b3f755def5dd642 ""
-  "Chuong/3_Cong_nghe.aux" 1766322765 6237 49d7ee93c0c4a66e14112afe2850a4ca "pdflatex"
+["bibtex Chuong/3_Cong_nghe"] 1768372902.05847 "Chuong/3_Cong_nghe.aux" "Chuong/3_Cong_nghe.bbl" "Chuong/3_Cong_nghe" 1768372907.09713 0
+  "./Danh_sach_tai_lieu_tham_khao.bib" 1767521395 2144 df1b8c858d1486ee6e867eeae2b3b5b8 ""
+  "Chuong/3_Cong_nghe.aux" 1768372905 6543 4cf37a78f85d0a9754f16080660d1994 "pdflatex"
   "D:/latex/bibtex/bst/biblatex/biblatex.bst" 1752408733 65510 9a2a51799b543ff279b8ea2dd91ec499 ""
-  "c:/do_an/latex/Chuong/3_Cong_nghe-blx.bib" 1766322765 343 eecd58be191eac03682f8fda492bb690 ""
+  "c:/do_an/latex/Chuong/3_Cong_nghe-blx.bib" 1768372905 343 eecd58be191eac03682f8fda492bb690 ""
   (generated)
   "Chuong/3_Cong_nghe.bbl"
   "Chuong/3_Cong_nghe.blg"
   (rewritten before read)
-["pdflatex"] 1766322762.54043 "c:/do_an/latex/Chuong/3_Cong_nghe.tex" "Chuong/3_Cong_nghe.pdf" "3_Cong_nghe" 1766322766.37267 0
-  "C:/Users/Dell/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1766129792 89969 e95579120a3aa0ebc21d2737ca2ba701 ""
+["pdflatex"] 1768372902.56232 "c:/do_an/latex/Chuong/3_Cong_nghe.tex" "Chuong/3_Cong_nghe.pdf" "3_Cong_nghe" 1768372907.0985 0
+  "C:/Users/Dell/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1768015447 159639 659d96135080df7783689c24d50f5da4 ""
   "C:/Users/Dell/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1766129612 13316234 d110eca872ba4e59c3a5366762933e9a ""
-  "Chuong/../DoAn.tex" 1766131658 10707 b1705323a6c9e753cd30f53565a6fba3 ""
-  "Chuong/3_Cong_nghe.aux" 1766322765 6237 49d7ee93c0c4a66e14112afe2850a4ca "pdflatex"
-  "Chuong/3_Cong_nghe.bbl" 1766322747 540 47390d0fec917a8062f60a58a9b6d248 "bibtex Chuong/3_Cong_nghe"
-  "Chuong/3_Cong_nghe.out" 1766322765 2950 a429d0874c512d786b5b79f4b18c0fe7 "pdflatex"
-  "Chuong/3_Cong_nghe.run.xml" 1766322765 2700 a21489d0f62ceeae40dfea6de7a34c4a "pdflatex"
-  "Chuong/3_Cong_nghe.tex" 1766322762 13299 1c829e2c6ff307e42c25b7b5e56bc91f ""
+  "Chuong/../DoAn.tex" 1767604056 10952 5a0f69156462317edce9f71d45f2e523 ""
+  "Chuong/3_Cong_nghe.aux" 1768372905 6543 4cf37a78f85d0a9754f16080660d1994 "pdflatex"
+  "Chuong/3_Cong_nghe.bbl" 1768372902 2280 75327d1a6a181d8bac16d98294f33705 "bibtex Chuong/3_Cong_nghe"
+  "Chuong/3_Cong_nghe.out" 1768372905 2950 a429d0874c512d786b5b79f4b18c0fe7 "pdflatex"
+  "Chuong/3_Cong_nghe.run.xml" 1768372905 2700 a46dbeeaa1b62922fa9ca827d71d996e "pdflatex"
+  "Chuong/3_Cong_nghe.tex" 1768372893 13355 027e2c685ecdc25eecc9fd86244918c0 ""
   "Chuong/lstlisting" 0 -1 0 ""
   "D:/latex/fonts/enc/dvips/vntex/t5.enc" 1368738347 7824 21ade6c3c7fd67cb4ace8dbc91c53118 ""
   "D:/latex/fonts/tfm/public/cm/cmr12.tfm" 1136765053 1288 655e228510b4c2a1abe905c368440826 ""
@@ -166,9 +166,9 @@
   "D:/latex/tex/latex/xfor/xfor.sty" 1233849756 2689 44855b72da58344b1c1d9b3087bce6ca ""
   "D:/latex/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "D:/latex/tex/latex/xurl/xurl.sty" 1641733940 4675 e4b8c405820368c2dfb03526e16d725a ""
-  "DoAn.tex" 1766131658 10707 b1705323a6c9e753cd30f53565a6fba3 ""
+  "DoAn.tex" 1767604056 10952 5a0f69156462317edce9f71d45f2e523 ""
   "Tu_viet_tat.tex" 1766089964 1839 8cf5230c49752db0ab892f5121f648f7 ""
-  "c:/do_an/latex/Chuong/3_Cong_nghe.tex" 1766322762 13299 1c829e2c6ff307e42c25b7b5e56bc91f ""
+  "c:/do_an/latex/Chuong/3_Cong_nghe.tex" 1768372893 13355 027e2c685ecdc25eecc9fd86244918c0 ""
   "lstlisting" 0 -1 0 ""
   (generated)
   "Chuong/3_Cong_nghe-blx.bib"

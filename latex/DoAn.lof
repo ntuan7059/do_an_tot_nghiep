@@ -5,20 +5,21 @@
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Biểu đồ Use Case phân rã use case Quản lý người dùng}}{7}{figure.caption.10}%
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Biểu đồ Use Case phân rã use case Quản lý nhà cung cấp}}{9}{figure.caption.11}%
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Biểu đồ Use Case phân rã use case Quản lý tài khoản}}{10}{figure.caption.12}%
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Biểu đồ hoạt động quy trình nghiệp vụ đăng nhập}}{12}{figure.caption.13}%
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Biểu đồ hoạt động quy trình nghiệp vụ phân quyền}}{13}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Biểu đồ hoạt động quy trình nghiệp vụ đăng nhập}}{11}{figure.caption.13}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Biểu đồ hoạt động quy trình nghiệp vụ phân quyền}}{12}{figure.caption.14}%
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Biểu đồ hoạt động quy trình nghiệp vụ quản lý tài sản}}{14}{figure.caption.15}%
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Biểu đồ hoạt động use case Quản lý tài khoản}}{17}{figure.caption.17}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Biểu đồ hoạt động use case Quản lý tài khoản}}{16}{figure.caption.17}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Biểu đồ phụ thuộc gói của hệ thống}}{30}{figure.caption.21}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Thiết kế chi tiết các gói của hệ thống}}{32}{figure.caption.22}%
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Internet vạn vật}}{41}{figure.caption.28}%
-\contentsline {figure}{\numberline {A.2}{\ignorespaces Qui cách đóng quyển đồ án}}{42}{figure.caption.31}%
-\contentsline {figure}{\numberline {A.3}{\ignorespaces Qui cách đóng quyển đồ án}}{43}{figure.caption.32}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Biểu đồ phụ thuộc gói của hệ thống}}{29}{figure.caption.21}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Thiết kế chi tiết các gói của hệ thống}}{31}{figure.caption.22}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Thiết kế giao diện màn hình tổng quan của hệ thống Ứng dụng quản lý tài sản}}{32}{figure.caption.23}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Thiết kế giao diện màn hình quản lý tài sản}}{33}{figure.caption.24}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Biểu đồ lớp các lớp chủ đạo của hệ thống}}{34}{figure.caption.25}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Biểu đồ thực thể liên kết của hệ thống}}{35}{figure.caption.26}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Màn hình tổng quan hệ thống}}{38}{figure.caption.29}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Màn hình quản lý tài sản}}{38}{figure.caption.30}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Màn hình cấp phát tài sản}}{38}{figure.caption.31}%
 \addvspace {10\p@ }
 \contentsfinish 
 \contentsfinish 
